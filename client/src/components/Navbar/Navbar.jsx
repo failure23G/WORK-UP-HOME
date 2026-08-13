@@ -264,7 +264,7 @@ const Navbar = () => {
 
         const response =
           await fetch(
-            "http://localhost:5000/api/notifications",
+            "https://work-up-home.onrender.com/api/notifications",
             {
               method: "GET",
 
@@ -436,7 +436,7 @@ const Navbar = () => {
           notificationId
         ) {
           await fetch(
-            `http://localhost:5000/api/notifications/${notificationId}/read`,
+            `https://work-up-home.onrender.com/api/notifications/${notificationId}/read`,
             {
               method: "PATCH",
 
@@ -497,7 +497,7 @@ const Navbar = () => {
 
         if (token) {
           await fetch(
-            "http://localhost:5000/api/notifications/read-all",
+            "https://work-up-home.onrender.com/api/notifications/read-all",
             {
               method: "PATCH",
 

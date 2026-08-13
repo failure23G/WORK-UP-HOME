@@ -10,7 +10,7 @@ import "./Withdraw.css";
 // ============================================================
 
 const API_URL =
-  "http://localhost:5000/api";
+  "https://work-up-home.onrender.com/api";
 
 const EXCHANGE_RATE = 115;
 

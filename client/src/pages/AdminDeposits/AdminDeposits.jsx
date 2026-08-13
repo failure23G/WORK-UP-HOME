@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./AdminDeposits.css";
 
-const API_URL = "http://localhost:5000";
+const API_URL = "https://work-up-home.onrender.com";
 
 function AdminDeposits() {
   const [deposits, setDeposits] = useState([]);

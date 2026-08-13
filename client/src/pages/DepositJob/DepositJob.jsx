@@ -7,10 +7,10 @@ import React, {
 import "./DepositJob.css";
 
 const API_URL =
-  "http://localhost:5000/api";
+  "https://work-up-home.onrender.com/api";
 
 const SERVER_URL =
-  "http://localhost:5000";
+  "https://work-up-home.onrender.com";
 
 const EXCHANGE_RATE = 115;
 

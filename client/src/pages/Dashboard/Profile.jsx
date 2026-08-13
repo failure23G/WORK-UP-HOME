@@ -56,7 +56,7 @@ const Profile = () => {
           setPreviewImage(
             currentUser.profileImage.startsWith("http")
               ? currentUser.profileImage
-              : `http://localhost:5000${currentUser.profileImage}`
+              : `https://work-up-home.onrender.com${currentUser.profileImage}`
           );
         }
       } catch (err) {
@@ -185,7 +185,7 @@ const Profile = () => {
         const imageUrl =
           data.profileImage.startsWith("http")
             ? data.profileImage
-            : `http://localhost:5000${data.profileImage}`;
+            : `https://work-up-home.onrender.com${data.profileImage}`;
 
         setPreviewImage(imageUrl);
       }
@@ -421,7 +421,7 @@ const Profile = () => {
                         "http"
                       )
                         ? user.profileImage
-                        : `http://localhost:5000${user.profileImage}`
+                        : `https://work-up-home.onrender.com${user.profileImage}`
                     );
                   } else {
                     setPreviewImage("");
