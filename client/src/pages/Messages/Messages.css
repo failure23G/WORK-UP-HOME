@@ -1,0 +1,143 @@
+/* =========================================================
+   MOBILE FULL SCREEN DASHBOARD
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+  html,
+  body,
+  #root {
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  /* Main dashboard wrapper */
+  .dashboard {
+    width: 100vw !important;
+    min-width: 100vw !important;
+    max-width: 100vw !important;
+    min-height: 100vh;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow-x: hidden;
+  }
+
+  /* Dashboard layout */
+  .dashboard-layout {
+    width: 100vw !important;
+    min-width: 100vw !important;
+    max-width: 100vw !important;
+    min-height: 100vh;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: flex;
+    overflow-x: hidden;
+  }
+
+  /* Header */
+  .dashboard-header,
+  .header,
+  .top-header {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* Main content */
+  .dashboard-main,
+  .main-content,
+  .content-area {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    padding: 15px !important;
+    overflow-x: hidden;
+  }
+
+  /* Sidebar */
+  .sidebar {
+    max-width: 100vw;
+  }
+
+  /* Cards */
+  .dashboard-card,
+  .card {
+    max-width: 100% !important;
+  }
+
+  /* Prevent wide elements */
+  img,
+  video,
+  iframe,
+  table {
+    max-width: 100%;
+  }
+
+  /* Tables can scroll instead of breaking screen */
+  .table-container {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+  .dashboard,
+  .dashboard-layout {
+    width: 100vw !important;
+    min-width: 100vw !important;
+    max-width: 100vw !important;
+  }
+
+  .dashboard-main,
+  .main-content,
+  .content-area {
+    width: 100% !important;
+    padding: 12px !important;
+  }
+
+  .dashboard-header,
+  .header,
+  .top-header {
+    width: 100% !important;
+  }
+
+  body {
+    overflow-x: hidden !important;
+  }
+}
+
+
+/* =========================================================
+   VERY SMALL PHONE
+   ========================================================= */
+
+@media (max-width: 360px) {
+
+  .dashboard-main,
+  .main-content,
+  .content-area {
+    padding: 10px !important;
+  }
+
+  .dashboard,
+  .dashboard-layout {
+    width: 100vw !important;
+  }
+}

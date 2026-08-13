@@ -1,0 +1,638 @@
+/* =========================================================
+   WORK UP HOME
+   GLOBAL INDEX CSS
+   FULL RESPONSIVE
+========================================================= */
+
+:root {
+  --text: #6b6375;
+  --text-h: #08060d;
+
+  --bg: #ffffff;
+  --border: #e5e4e7;
+
+  --accent: #aa3bff;
+  --accent-bg: rgba(170, 59, 255, 0.1);
+  --accent-border: rgba(170, 59, 255, 0.5);
+
+  --code-bg: #f4f3ec;
+  --social-bg: rgba(244, 243, 236, 0.5);
+
+  --shadow:
+    rgba(0, 0, 0, 0.1) 0 10px 15px -3px,
+    rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+
+  --sans:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Arial,
+    sans-serif;
+
+  --heading:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Arial,
+    sans-serif;
+
+  --mono:
+    ui-monospace,
+    SFMono-Regular,
+    Consolas,
+    "Liberation Mono",
+    monospace;
+
+  font-family: var(--sans);
+
+  font-size: 16px;
+  line-height: 1.45;
+  font-weight: 400;
+
+  color: var(--text);
+  background: var(--bg);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* =========================================================
+   RESET
+========================================================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  width: 100%;
+  min-width: 0;
+
+  height: 100%;
+  min-height: 100%;
+
+  margin: 0;
+  padding: 0;
+
+  overflow-x: hidden;
+
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  width: 100%;
+  min-width: 0;
+
+  min-height: 100vh;
+  min-height: 100svh;
+
+  margin: 0;
+  padding: 0;
+
+  background: #f4f7fc;
+
+  overflow-x: hidden;
+
+  -webkit-text-size-adjust: 100%;
+}
+
+#root {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+
+  min-height: 100vh;
+  min-height: 100svh;
+
+  margin: 0;
+  padding: 0;
+
+  text-align: left;
+
+  border: 0;
+
+  display: block;
+
+  box-sizing: border-box;
+
+  overflow-x: hidden;
+}
+
+/* =========================================================
+   UNIVERSAL RESPONSIVE RULES
+========================================================= */
+
+* {
+  max-width: 100%;
+}
+
+div,
+section,
+main,
+header,
+footer,
+nav,
+aside,
+article,
+form {
+  min-width: 0;
+}
+
+img,
+svg,
+video,
+canvas {
+  max-width: 100%;
+}
+
+img {
+  height: auto;
+}
+
+iframe {
+  max-width: 100%;
+  border: 0;
+}
+
+table {
+  max-width: 100%;
+  border-collapse: collapse;
+}
+
+/* =========================================================
+   FORMS
+========================================================= */
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+input,
+textarea,
+select {
+  max-width: 100%;
+  min-width: 0;
+}
+
+/* =========================================================
+   HEADINGS
+========================================================= */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--heading);
+
+  color: var(--text-h);
+
+  margin-top: 0;
+
+  overflow-wrap: anywhere;
+}
+
+h1 {
+  font-size: 56px;
+  line-height: 1.1;
+  letter-spacing: -1.68px;
+
+  margin-bottom: 32px;
+}
+
+h2 {
+  font-size: 24px;
+  line-height: 118%;
+  letter-spacing: -0.24px;
+
+  margin-bottom: 8px;
+}
+
+h3 {
+  overflow-wrap: anywhere;
+}
+
+p {
+  margin: 0;
+
+  overflow-wrap: anywhere;
+}
+
+/* =========================================================
+   LINKS
+========================================================= */
+
+a {
+  color: inherit;
+
+  text-decoration: none;
+
+  max-width: 100%;
+}
+
+/* =========================================================
+   CODE
+========================================================= */
+
+code {
+  font-family: var(--mono);
+
+  font-size: 15px;
+  line-height: 135%;
+
+  padding: 4px 8px;
+
+  background: var(--code-bg);
+
+  color: var(--text-h);
+
+  border-radius: 4px;
+
+  overflow-wrap: anywhere;
+}
+
+/* =========================================================
+   COUNTER
+========================================================= */
+
+.counter {
+  font-family: var(--mono);
+
+  display: inline-flex;
+
+  max-width: 100%;
+
+  font-size: 16px;
+
+  padding: 5px 10px;
+
+  border-radius: 5px;
+
+  color: var(--accent);
+  background: var(--accent-bg);
+
+  border: 2px solid transparent;
+
+  transition: border-color 0.3s;
+
+  margin-bottom: 24px;
+}
+
+.counter:hover {
+  border-color: var(--accent-border);
+}
+
+.counter:focus-visible {
+  outline: 2px solid var(--accent);
+
+  outline-offset: 2px;
+}
+
+/* =========================================================
+   RESPONSIVE CONTAINERS
+========================================================= */
+
+.container,
+.page-container,
+.main-container,
+.content-container {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* =========================================================
+   PREVENT HORIZONTAL OVERFLOW
+========================================================= */
+
+pre {
+  max-width: 100%;
+
+  overflow-x: auto;
+
+  white-space: pre;
+}
+
+pre code {
+  white-space: pre;
+}
+
+.text-wrap,
+.break-word {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1024px) {
+  :root {
+    font-size: 16px;
+  }
+
+  h1 {
+    font-size: 36px;
+
+    letter-spacing: -1px;
+
+    margin-bottom: 20px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  body {
+    overflow-x: hidden;
+  }
+
+  #root {
+    overflow-x: hidden;
+  }
+}
+
+/* =========================================================
+   SMALL TABLET
+========================================================= */
+
+@media (max-width: 768px) {
+  html,
+  body,
+  #root {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+
+    overflow-x: hidden;
+  }
+
+  h1 {
+    font-size: 32px;
+
+    letter-spacing: -0.8px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  img,
+  svg,
+  video,
+  canvas {
+    max-width: 100%;
+  }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+  html,
+  body,
+  #root {
+    width: 100%;
+
+    min-width: 0;
+
+    max-width: 100%;
+
+    overflow-x: hidden;
+  }
+
+  body {
+    min-height: 100vh;
+    min-height: 100svh;
+  }
+
+  h1 {
+    font-size: 30px;
+
+    line-height: 1.2;
+
+    letter-spacing: -0.6px;
+
+    margin-bottom: 16px;
+  }
+
+  h2 {
+    font-size: 19px;
+
+    line-height: 1.25;
+  }
+
+  h3 {
+    font-size: 16px;
+  }
+
+  p {
+    font-size: 14px;
+  }
+
+  button {
+    max-width: 100%;
+  }
+
+  input,
+  textarea,
+  select {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /*
+    Prevent accidental fixed desktop widths
+    from creating horizontal scroll.
+  */
+  .page,
+  .container,
+  .main,
+  .content,
+  .content-wrapper,
+  .main-content {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+}
+
+/* =========================================================
+   VERY SMALL MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+  html,
+  body,
+  #root {
+    width: 100%;
+    min-width: 0;
+
+    overflow-x: hidden;
+  }
+
+  h1 {
+    font-size: 28px;
+
+    line-height: 1.2;
+  }
+
+  h2 {
+    font-size: 18px;
+  }
+
+  h3 {
+    font-size: 15px;
+  }
+
+  p {
+    font-size: 13px;
+  }
+
+  code {
+    font-size: 13px;
+
+    padding: 3px 6px;
+  }
+}
+
+/* =========================================================
+   EXTRA SMALL MOBILE
+========================================================= */
+
+@media (max-width: 400px) {
+  html,
+  body,
+  #root {
+    width: 100%;
+    min-width: 0;
+
+    overflow-x: hidden;
+  }
+
+  h1 {
+    font-size: 27px;
+  }
+
+  h2 {
+    font-size: 18px;
+  }
+
+  h3 {
+    font-size: 14px;
+  }
+
+  p {
+    font-size: 12px;
+  }
+}
+
+/* =========================================================
+   VERY SMALL PHONE
+========================================================= */
+
+@media (max-width: 360px) {
+  h1 {
+    font-size: 25px;
+
+    letter-spacing: -0.4px;
+  }
+
+  h2 {
+    font-size: 17px;
+  }
+
+  h3 {
+    font-size: 14px;
+  }
+
+  p {
+    font-size: 12px;
+  }
+}
+
+/* =========================================================
+   320PX PHONE
+========================================================= */
+
+@media (max-width: 320px) {
+  html,
+  body,
+  #root {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+
+    overflow-x: hidden;
+  }
+
+  h1 {
+    font-size: 23px;
+  }
+
+  h2 {
+    font-size: 16px;
+  }
+
+  h3 {
+    font-size: 13px;
+  }
+
+  p {
+    font-size: 11px;
+  }
+}
+
+/* =========================================================
+   TOUCH DEVICES
+========================================================= */
+
+@media (hover: none) and (pointer: coarse) {
+  button,
+  a {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  button:active {
+    transform: scale(0.98);
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+
+    transition-duration: 0.01ms !important;
+  }
+}

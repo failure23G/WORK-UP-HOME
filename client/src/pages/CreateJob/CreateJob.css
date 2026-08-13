@@ -1,0 +1,624 @@
+/* =========================================================
+   CREATE JOB PAGE
+========================================================= */
+
+.create-job-page {
+  min-height: 100vh;
+  padding: 40px 28px 80px;
+  background:
+    radial-gradient(circle at top left, #eeeaff 0%, transparent 35%),
+    linear-gradient(135deg, #f7f8ff 0%, #ffffff 55%, #f3f5ff 100%);
+  color: #1e284b;
+  box-sizing: border-box;
+}
+
+.create-job-container {
+  width: 100%;
+  max-width: 950px;
+  margin: 0 auto;
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.create-job-header {
+  margin-bottom: 28px;
+}
+
+.create-job-eyebrow {
+  display: inline-block;
+  margin-bottom: 9px;
+  color: #6847ed;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 3px;
+}
+
+.create-job-header h1 {
+  margin: 0;
+  color: #1d274b;
+  font-size: 42px;
+  font-weight: 800;
+}
+
+.create-job-header p {
+  max-width: 650px;
+  margin: 11px 0 0;
+  color: #7d87a4;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* =========================================================
+   MESSAGES
+========================================================= */
+
+.create-job-success,
+.create-job-error {
+  margin-bottom: 20px;
+  padding: 15px 18px;
+  border-radius: 13px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.create-job-success {
+  border: 1px solid #bdebd2;
+  background: #ecfff5;
+  color: #158957;
+}
+
+.create-job-error {
+  border: 1px solid #ffd0d0;
+  background: #fff2f2;
+  color: #c93838;
+}
+
+/* =========================================================
+   FORM
+========================================================= */
+
+.create-job-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* =========================================================
+   SECTION
+========================================================= */
+
+.create-job-section {
+  padding: 27px;
+  border: 1px solid #e4e7f2;
+  border-radius: 22px;
+  background: #ffffff;
+  box-shadow: 0 12px 35px rgba(46, 40, 125, 0.06);
+}
+
+.create-job-section-title {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.section-number {
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #7045ee, #4268ed);
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 900;
+  box-shadow: 0 7px 18px rgba(91, 67, 215, 0.2);
+}
+
+.create-job-section-title h2 {
+  margin: 1px 0 5px;
+  color: #253052;
+  font-size: 20px;
+}
+
+.create-job-section-title p {
+  margin: 0;
+  color: #8992aa;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+/* =========================================================
+   GRID
+========================================================= */
+
+.create-job-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+/* =========================================================
+   FIELD
+========================================================= */
+
+.create-job-field {
+  margin-bottom: 18px;
+}
+
+.create-job-field label {
+  display: block;
+  margin-bottom: 8px;
+  color: #3a4564;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.create-job-field input,
+.create-job-field select,
+.create-job-field textarea {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #dfe3ef;
+  border-radius: 12px;
+  outline: none;
+  background: #fafbff;
+  color: #283250;
+  font: inherit;
+  transition: 0.2s ease;
+}
+
+.create-job-field input,
+.create-job-field select {
+  height: 48px;
+  padding: 0 14px;
+}
+
+.create-job-field textarea {
+  min-height: 105px;
+  padding: 13px 14px;
+  resize: vertical;
+  line-height: 1.55;
+}
+
+.create-job-field input:focus,
+.create-job-field select:focus,
+.create-job-field textarea:focus {
+  border-color: #6e4aeb;
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(110, 74, 235, 0.1);
+}
+
+.create-job-field input::placeholder,
+.create-job-field textarea::placeholder {
+  color: #a0a8bc;
+}
+
+.create-job-field select:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* Full-width fields */
+.create-job-section > .create-job-field {
+  width: 100%;
+}
+
+/* =========================================================
+   MONEY INPUT
+========================================================= */
+
+.money-input {
+  position: relative;
+}
+
+.money-input > span {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #6544df;
+  font-weight: 900;
+}
+
+.money-input input {
+  padding-left: 31px;
+}
+
+/* =========================================================
+   TASKS
+========================================================= */
+
+.task-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.task-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.task-number {
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: 9px;
+  background: #eeeaff;
+  color: #6947df;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.task-row input {
+  flex: 1;
+  height: 46px;
+  padding: 0 13px;
+  border: 1px solid #dfe3ef;
+  border-radius: 11px;
+  outline: none;
+  background: #fafbff;
+  color: #293351;
+  font: inherit;
+  box-sizing: border-box;
+}
+
+.task-row input:focus {
+  border-color: #6d4aea;
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(109, 74, 234, 0.09);
+}
+
+.task-remove-btn {
+  width: 35px;
+  height: 35px;
+  border: none;
+  border-radius: 9px;
+  background: #ffe8e8;
+  color: #d33e3e;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.task-add-btn {
+  margin-top: 14px;
+  padding: 10px 15px;
+  border: 1px dashed #8b79e6;
+  border-radius: 10px;
+  background: #f8f6ff;
+  color: #6947dc;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+/* =========================================================
+   COST BOX
+========================================================= */
+
+.create-job-cost-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-top: 5px;
+  padding: 18px 20px;
+  border: 1px solid #ded8ff;
+  border-radius: 15px;
+  background: linear-gradient(135deg, #f8f6ff, #f2f5ff);
+}
+
+.create-job-cost-box span {
+  display: block;
+  color: #475272;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.create-job-cost-box small {
+  display: block;
+  margin-top: 4px;
+  color: #8b94aa;
+}
+
+.create-job-cost-box strong {
+  color: #6041dc;
+  font-size: 25px;
+}
+
+/* =========================================================
+   CHECKBOX
+========================================================= */
+
+.create-job-checkbox {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  margin-top: 5px;
+  color: #3d4866;
+  font-size: 13px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.create-job-checkbox input {
+  position: absolute;
+  opacity: 0;
+}
+
+.checkbox-custom {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #cdd2e1;
+  border-radius: 6px;
+  background: #ffffff;
+  box-sizing: border-box;
+  transition: 0.2s ease;
+}
+
+.create-job-checkbox input:checked + .checkbox-custom {
+  border-color: #6947e8;
+  background: linear-gradient(135deg, #7045ee, #4268ed);
+  box-shadow: inset 0 0 0 4px #ffffff;
+}
+
+/* =========================================================
+   THUMBNAIL UPLOAD
+========================================================= */
+
+.thumbnail-upload {
+  min-height: 210px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed #c8c1ee;
+  border-radius: 18px;
+  background: #faf9ff;
+  color: #65708c;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.thumbnail-upload:hover {
+  border-color: #7557e8;
+  background: #f5f2ff;
+}
+
+.thumbnail-upload input {
+  display: none;
+}
+
+.thumbnail-upload-icon {
+  width: 58px;
+  height: 58px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 17px;
+  background: linear-gradient(135deg, #7045ee, #4268ed);
+  color: white;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.thumbnail-upload strong {
+  color: #3c4665;
+  font-size: 15px;
+}
+
+.thumbnail-upload > span {
+  margin-top: 6px;
+  color: #929bb1;
+  font-size: 12px;
+}
+
+.thumbnail-preview-box {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  padding: 15px;
+  border: 1px solid #e0e3ef;
+  border-radius: 17px;
+  background: #fafbff;
+}
+
+.thumbnail-preview-box img {
+  width: 170px;
+  height: 120px;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.thumbnail-preview-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.thumbnail-preview-info strong {
+  max-width: 430px;
+  color: #34405e;
+  word-break: break-word;
+}
+
+.thumbnail-preview-info span {
+  color: #8b94aa;
+  font-size: 12px;
+}
+
+.thumbnail-preview-info button {
+  margin-top: 7px;
+  padding: 8px 13px;
+  border: none;
+  border-radius: 9px;
+  background: #ffe6e6;
+  color: #d13b3b;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+/* =========================================================
+   ADMIN NOTICE
+========================================================= */
+
+.create-job-review-notice {
+  display: flex;
+  gap: 15px;
+  padding: 18px 20px;
+  border: 1px solid #ded8ff;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #f8f6ff, #f3f6ff);
+}
+
+.review-notice-icon {
+  width: 37px;
+  height: 37px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: 11px;
+  background: #e8e2ff;
+  color: #6947dd;
+  font-weight: 900;
+}
+
+.create-job-review-notice strong {
+  color: #3b4563;
+  font-size: 14px;
+}
+
+.create-job-review-notice p {
+  margin: 5px 0 0;
+  color: #7c86a2;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+/* =========================================================
+   ACTIONS
+========================================================= */
+
+.create-job-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  padding-top: 5px;
+}
+
+.create-job-reset-btn,
+.create-job-submit-btn {
+  min-width: 125px;
+  height: 47px;
+  padding: 0 20px;
+  border: none;
+  border-radius: 12px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.create-job-reset-btn {
+  background: #eceef5;
+  color: #59637d;
+}
+
+.create-job-reset-btn:hover:not(:disabled) {
+  background: #e2e4ec;
+}
+
+.create-job-submit-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  background: linear-gradient(135deg, #7045ee, #4268ed);
+  color: #ffffff;
+  box-shadow: 0 9px 23px rgba(89, 65, 215, 0.2);
+}
+
+.create-job-submit-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 13px 28px rgba(89, 65, 215, 0.28);
+}
+
+.create-job-reset-btn:disabled,
+.create-job-submit-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.create-job-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255,255,255,0.4);
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: createJobSpin 0.7s linear infinite;
+}
+
+@keyframes createJobSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 700px) {
+  .create-job-page {
+    padding: 25px 15px 60px;
+  }
+
+  .create-job-header h1 {
+    font-size: 32px;
+  }
+
+  .create-job-section {
+    padding: 20px;
+    border-radius: 18px;
+  }
+
+  .create-job-grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .thumbnail-preview-box {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .thumbnail-preview-box img {
+    width: 100%;
+    height: 180px;
+  }
+
+  .thumbnail-preview-info {
+    align-items: stretch;
+  }
+
+  .create-job-actions {
+    flex-direction: column-reverse;
+  }
+
+  .create-job-reset-btn,
+  .create-job-submit-btn {
+    width: 100%;
+  }
+}

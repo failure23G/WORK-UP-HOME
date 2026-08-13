@@ -1,0 +1,1059 @@
+/* ============================================================
+   WITHDRAW PAGE
+============================================================ */
+
+.withdraw-page {
+  width: 100%;
+  min-height: 100%;
+  padding: 30px;
+  box-sizing: border-box;
+}
+
+
+/* ============================================================
+   HEADER
+============================================================ */
+
+.withdraw-header {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 25px;
+  margin-bottom: 25px;
+}
+
+.withdraw-kicker {
+  display: block;
+  margin-bottom: 8px;
+
+  color: #3156d9;
+
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.withdraw-header h1 {
+  margin: 0;
+
+  color: #10234d;
+
+  font-size: 34px;
+  line-height: 1.15;
+  font-weight: 800;
+}
+
+.withdraw-header p {
+  margin: 10px 0 0;
+
+  color: #7c8aa8;
+
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+
+/* ============================================================
+   WITHDRAW RANGE CARD
+============================================================ */
+
+.withdraw-range-card {
+  min-width: 210px;
+
+  padding: 22px 25px;
+
+  box-sizing: border-box;
+
+  background: #ffffff;
+
+  border: 1px solid #e3e8f4;
+  border-radius: 18px;
+
+  box-shadow:
+    0 8px 25px rgba(44, 72, 130, 0.08);
+
+  text-align: center;
+}
+
+.withdraw-range-card span {
+  display: block;
+
+  margin-bottom: 8px;
+
+  color: #8a97b2;
+
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.withdraw-range-card strong {
+  display: block;
+
+  color: #315be5;
+
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.withdraw-range-card small {
+  display: block;
+
+  margin-top: 6px;
+
+  color: #71809d;
+
+  font-size: 13px;
+  font-weight: 600;
+}
+
+
+/* ============================================================
+   MAIN CARD
+============================================================ */
+
+.withdraw-card {
+  width: 100%;
+
+  box-sizing: border-box;
+
+  padding: 28px;
+
+  background: #ffffff;
+
+  border: 1px solid #e3e8f4;
+  border-radius: 22px;
+
+  box-shadow:
+    0 12px 35px rgba(38, 61, 110, 0.08);
+}
+
+
+/* ============================================================
+   PAYMENT METHODS
+============================================================ */
+
+.withdraw-methods {
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 12px;
+
+  margin-bottom: 28px;
+}
+
+.withdraw-method {
+  width: 100%;
+  min-height: 82px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 13px;
+
+  padding: 14px;
+
+  border: 1px solid #e1e6f2;
+  border-radius: 17px;
+
+  background: #f8faff;
+
+  cursor: pointer;
+
+  text-align: left;
+
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.withdraw-method:hover {
+  transform: translateY(-2px);
+
+  border-color: #9fb2ed;
+
+  box-shadow:
+    0 8px 20px rgba(55, 84, 170, 0.08);
+}
+
+.withdraw-method.active {
+  background: linear-gradient(
+    135deg,
+    #ef2946,
+    #d91f3d
+  );
+
+  border-color: transparent;
+
+  box-shadow:
+    0 12px 25px rgba(217, 31, 61, 0.18);
+}
+
+
+/* ============================================================
+   PAYMENT ICON
+============================================================ */
+
+.withdraw-method-icon {
+  width: 42px;
+  height: 42px;
+
+  flex: 0 0 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 12px;
+
+  background: #607292;
+
+  color: #ffffff;
+
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.withdraw-method.active
+.withdraw-method-icon {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+
+/* ============================================================
+   PAYMENT TEXT
+============================================================ */
+
+.withdraw-method-content {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 3px;
+}
+
+.withdraw-method-content strong {
+  color: #172a52;
+
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.withdraw-method-content small {
+  color: #7f8ba5;
+
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.withdraw-method.active
+.withdraw-method-content strong {
+  color: #ffffff;
+}
+
+.withdraw-method.active
+.withdraw-method-content small {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+
+/* ============================================================
+   FORM
+============================================================ */
+
+.withdraw-form {
+  width: 100%;
+}
+
+
+/* ============================================================
+   FIELD
+============================================================ */
+
+.withdraw-field {
+  width: 100%;
+
+  margin-bottom: 25px;
+}
+
+.withdraw-field label {
+  display: block;
+
+  margin-bottom: 10px;
+
+  color: #263b64;
+
+  font-size: 14px;
+  font-weight: 800;
+
+  text-align: left;
+}
+
+.withdraw-field input {
+  width: 100%;
+  height: 48px;
+
+  box-sizing: border-box;
+
+  padding: 0 15px;
+
+  border: 1px solid #dfe5f1;
+  border-radius: 14px;
+
+  background: #ffffff;
+
+  color: #344563;
+
+  font-size: 14px;
+
+  outline: none;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.withdraw-field input::placeholder {
+  color: #98a3b7;
+}
+
+.withdraw-field input:focus {
+  border-color: #5570e8;
+
+  box-shadow:
+    0 0 0 4px rgba(76, 100, 225, 0.09);
+}
+
+
+/* ============================================================
+   FIELD HELP TEXT
+============================================================ */
+
+.withdraw-field > small {
+  display: block;
+
+  margin-top: 8px;
+
+  color: #9aa6bb;
+
+  font-size: 12px;
+  line-height: 1.5;
+
+  text-align: center;
+}
+
+.bdt-range-text {
+  margin-top: 3px !important;
+
+  color: #7283a6 !important;
+
+  font-weight: 600;
+}
+
+
+/* ============================================================
+   AMOUNT INPUT
+============================================================ */
+
+.withdraw-amount-input {
+  width: 100%;
+  height: 48px;
+
+  display: flex;
+  align-items: center;
+
+  box-sizing: border-box;
+
+  border: 1px solid #dfe5f1;
+  border-radius: 14px;
+
+  background: #ffffff;
+
+  overflow: hidden;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.withdraw-amount-input:focus-within {
+  border-color: #5570e8;
+
+  box-shadow:
+    0 0 0 4px rgba(76, 100, 225, 0.09);
+}
+
+
+/* ============================================================
+   DOLLAR ICON
+============================================================ */
+
+.withdraw-amount-input > span {
+  width: 50px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #315de7;
+
+  font-size: 20px;
+  font-weight: 800;
+}
+
+
+/* ============================================================
+   AMOUNT NUMBER INPUT
+============================================================ */
+
+.withdraw-amount-input input {
+  flex: 1;
+
+  width: auto;
+  height: 100%;
+
+  padding: 0;
+
+  border: 0;
+  border-radius: 0;
+
+  background: transparent;
+
+  box-shadow: none;
+
+  outline: none;
+
+  color: #344563;
+
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.withdraw-amount-input input:focus {
+  border: 0;
+
+  box-shadow: none;
+}
+
+
+/* ============================================================
+   USDT LABEL
+============================================================ */
+
+.withdraw-amount-input > strong {
+  padding: 0 16px;
+
+  color: #8995ad;
+
+  font-size: 12px;
+  font-weight: 800;
+}
+
+
+/* ============================================================
+   REMOVE CHROME / EDGE NUMBER ARROWS
+============================================================ */
+
+.withdraw-amount-input
+input::-webkit-outer-spin-button,
+.withdraw-amount-input
+input::-webkit-inner-spin-button {
+  margin: 0;
+
+  -webkit-appearance: none;
+}
+
+
+/* ============================================================
+   CALCULATION BOX
+============================================================ */
+
+.withdraw-calculation {
+  width: 100%;
+
+  box-sizing: border-box;
+
+  margin-top: 8px;
+  margin-bottom: 20px;
+
+  padding: 25px 20px;
+
+  background: linear-gradient(
+    135deg,
+    #f4f6ff,
+    #eef2ff
+  );
+
+  border: 1px solid #e1e6f8;
+
+  border-radius: 18px;
+}
+
+
+/* ============================================================
+   CALCULATION ROW
+============================================================ */
+
+.calculation-row {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 15px;
+
+  padding: 9px 0;
+}
+
+.calculation-row span {
+  color: #667898;
+
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.calculation-row strong {
+  color: #26385e;
+
+  font-size: 16px;
+  font-weight: 800;
+
+  text-align: right;
+}
+
+
+/* ============================================================
+   FEE SMALL TEXT
+============================================================ */
+
+.calculation-row span small {
+  color: #7e8ca8;
+
+  font-size: 12px;
+}
+
+
+/* ============================================================
+   FEE AMOUNT
+============================================================ */
+
+.calculation-row .fee {
+  color: #ef334e;
+}
+
+
+/* ============================================================
+   CALCULATION DIVIDER
+============================================================ */
+
+.calculation-line {
+  width: 100%;
+  height: 1px;
+
+  margin: 10px 0;
+
+  background: #d7ddec;
+}
+
+
+/* ============================================================
+   TOTAL / YOU RECEIVE
+============================================================ */
+
+.calculation-row.total {
+  padding-top: 14px;
+}
+
+.calculation-row.total span {
+  color: #20345d;
+
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.calculation-row.total strong {
+  color: #315ce9;
+
+  font-size: 26px;
+  font-weight: 900;
+}
+
+
+/* ============================================================
+   MESSAGE
+============================================================ */
+
+.withdraw-message {
+  width: 100%;
+
+  box-sizing: border-box;
+
+  margin-bottom: 18px;
+
+  padding: 13px 16px;
+
+  border-radius: 12px;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  line-height: 1.5;
+}
+
+
+/* ============================================================
+   ERROR MESSAGE
+============================================================ */
+
+.withdraw-message.error {
+  color: #b4233b;
+
+  background: #fff1f3;
+
+  border: 1px solid #ffd1d9;
+}
+
+
+/* ============================================================
+   SUCCESS MESSAGE
+============================================================ */
+
+.withdraw-message.success {
+  color: #14734a;
+
+  background: #effcf5;
+
+  border: 1px solid #c8f0dc;
+}
+
+
+/* ============================================================
+   SUBMIT BUTTON
+============================================================ */
+
+.withdraw-submit {
+  width: 100%;
+  height: 52px;
+
+  border: 0;
+  border-radius: 14px;
+
+  background: linear-gradient(
+    135deg,
+    #7042ee,
+    #2d5bea
+  );
+
+  color: #ffffff;
+
+  font-size: 15px;
+  font-weight: 800;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 10px 22px rgba(72, 74, 224, 0.22);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.withdraw-submit:hover:not(:disabled) {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 14px 28px rgba(72, 74, 224, 0.28);
+}
+
+.withdraw-submit:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.withdraw-submit:disabled {
+  cursor: not-allowed;
+
+  opacity: 0.65;
+}
+
+
+/* ============================================================
+   FEE NOTICE
+============================================================ */
+
+.withdraw-fee-notice {
+  margin-top: 20px;
+
+  padding: 15px 18px;
+
+  border-radius: 13px;
+
+  background: #fafbff;
+
+  border: 1px solid #e7ebf4;
+
+  text-align: center;
+}
+
+.withdraw-fee-notice strong {
+  display: block;
+
+  color: #43557b;
+
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.withdraw-fee-notice p {
+  margin: 5px 0 0;
+
+  color: #8b97ad;
+
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+
+/* ============================================================
+   TABLET
+============================================================ */
+
+@media (max-width: 900px) {
+
+  .withdraw-page {
+    padding: 22px;
+  }
+
+  .withdraw-header {
+    flex-direction: column;
+
+    gap: 18px;
+  }
+
+  .withdraw-range-card {
+    width: 100%;
+
+    min-width: 0;
+  }
+
+  .withdraw-methods {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+
+/* ============================================================
+   MOBILE
+============================================================ */
+
+@media (max-width: 600px) {
+
+  .withdraw-page {
+    padding: 15px;
+  }
+
+  .withdraw-header {
+    gap: 18px;
+
+    margin-bottom: 18px;
+  }
+
+  .withdraw-kicker {
+    font-size: 11px;
+  }
+
+  .withdraw-header h1 {
+    font-size: 28px;
+  }
+
+  .withdraw-header p {
+    font-size: 13px;
+  }
+
+  .withdraw-range-card {
+    padding: 18px;
+  }
+
+  .withdraw-range-card strong {
+    font-size: 22px;
+  }
+
+  .withdraw-card {
+    padding: 18px;
+
+    border-radius: 18px;
+  }
+
+  .withdraw-method {
+    min-height: 72px;
+
+    padding: 12px;
+  }
+
+  .withdraw-calculation {
+    padding: 20px 15px;
+  }
+
+  .calculation-row span {
+    font-size: 13px;
+  }
+
+  .calculation-row strong {
+    font-size: 15px;
+  }
+
+  .calculation-row.total strong {
+    font-size: 23px;
+  }
+
+  .withdraw-submit {
+    height: 50px;
+
+    font-size: 14px;
+  }
+
+}
+
+
+/* ============================================================
+   VERY SMALL MOBILE
+============================================================ */
+
+@media (max-width: 380px) {
+
+  .withdraw-page {
+    padding: 10px;
+  }
+
+  .withdraw-card {
+    padding: 14px;
+  }
+
+  .withdraw-header h1 {
+    font-size: 25px;
+  }
+
+  .withdraw-range-card strong {
+    font-size: 20px;
+  }
+
+  .withdraw-method {
+    padding: 11px;
+  }
+
+  .withdraw-method-icon {
+    width: 38px;
+    height: 38px;
+
+    flex-basis: 38px;
+  }
+
+  .calculation-row {
+    gap: 8px;
+  }
+
+  .calculation-row.total strong {
+    font-size: 21px;
+  }
+
+}
+
+
+/* ============================================================
+   MOBILE FULL SCREEN FIX
+   Keeps the desktop/tablet design unchanged.
+   ============================================================ */
+
+@media (max-width: 600px) {
+  html,
+  body,
+  #root {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow-x: hidden !important;
+  }
+
+  .withdraw-page {
+    width: 100vw !important;
+    max-width: 100vw !important;
+    min-width: 0 !important;
+    min-height: 100dvh !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 16px !important;
+    box-sizing: border-box !important;
+    overflow-x: hidden !important;
+  }
+
+  .withdraw-header {
+    width: 100% !important;
+    box-sizing: border-box !important;
+    gap: 14px !important;
+    margin-bottom: 16px !important;
+  }
+
+  .withdraw-header h1 {
+    font-size: 26px !important;
+    line-height: 1.2 !important;
+  }
+
+  .withdraw-header p {
+    font-size: 13px !important;
+    line-height: 1.5 !important;
+    margin-top: 8px !important;
+  }
+
+  .withdraw-range-card {
+    width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+    padding: 18px 14px !important;
+    border-radius: 18px !important;
+  }
+
+  .withdraw-range-card strong {
+    font-size: 21px !important;
+  }
+
+  .withdraw-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    padding: 16px !important;
+    box-sizing: border-box !important;
+    border-radius: 18px !important;
+  }
+
+  .withdraw-methods {
+    width: 100% !important;
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+    margin-bottom: 22px !important;
+  }
+
+  .withdraw-method {
+    width: 100% !important;
+    min-width: 0 !important;
+    min-height: 72px !important;
+    box-sizing: border-box !important;
+    padding: 11px !important;
+    border-radius: 16px !important;
+  }
+
+  .withdraw-method-icon {
+    width: 40px !important;
+    height: 40px !important;
+    flex: 0 0 40px !important;
+  }
+
+  .withdraw-method-content {
+    min-width: 0 !important;
+    flex: 1 1 auto !important;
+  }
+
+  .withdraw-form {
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .withdraw-field {
+    width: 100% !important;
+    margin-bottom: 20px !important;
+  }
+
+  .withdraw-field input {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .withdraw-amount-input {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .withdraw-amount-input input {
+    min-width: 0 !important;
+  }
+
+  .withdraw-calculation {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 18px 13px !important;
+    border-radius: 16px !important;
+  }
+
+  .calculation-row {
+    gap: 8px !important;
+  }
+
+  .calculation-row span {
+    font-size: 12px !important;
+  }
+
+  .calculation-row strong {
+    font-size: 14px !important;
+  }
+
+  .calculation-row.total strong {
+    font-size: 21px !important;
+  }
+
+  .withdraw-message {
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .withdraw-submit {
+    width: 100% !important;
+    height: 50px !important;
+    box-sizing: border-box !important;
+  }
+
+  .withdraw-fee-notice {
+    width: 100% !important;
+    box-sizing: border-box !important;
+    margin-bottom: 10px !important;
+  }
+}
+
+/* Extra-small phones */
+@media (max-width: 380px) {
+  .withdraw-page {
+    padding: 10px !important;
+  }
+
+  .withdraw-header h1 {
+    font-size: 24px !important;
+  }
+
+  .withdraw-card {
+    padding: 13px !important;
+  }
+
+  .withdraw-method {
+    padding: 10px !important;
+  }
+
+  .withdraw-method-icon {
+    width: 38px !important;
+    height: 38px !important;
+    flex-basis: 38px !important;
+  }
+}

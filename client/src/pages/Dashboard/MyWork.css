@@ -1,0 +1,1061 @@
+/* =========================================================
+   MY WORK PAGE
+========================================================= */
+
+.my-work-page {
+  width: 100%;
+  min-height: 100vh;
+  padding: 42px 45px 70px;
+  box-sizing: border-box;
+
+  background:
+    radial-gradient(
+      circle at 10% 0%,
+      rgba(99, 102, 241, 0.10),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 90% 10%,
+      rgba(139, 92, 246, 0.10),
+      transparent 28%
+    ),
+    #f7f8ff;
+
+  color: #172554;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.my-work-header {
+  width: 100%;
+  max-width: 1100px;
+
+  margin: 0 auto 28px;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  gap: 25px;
+}
+
+
+.section-label {
+  display: inline-block;
+
+  margin-bottom: 8px;
+
+  color: #635bff;
+
+  font-size: 12px;
+  font-weight: 800;
+
+  letter-spacing: 3px;
+}
+
+
+.my-work-header h1 {
+  margin: 0;
+
+  font-size: 42px;
+  line-height: 1.1;
+
+  font-weight: 800;
+
+  color: #111827;
+
+  letter-spacing: -1.5px;
+}
+
+
+.my-work-header p {
+  margin: 10px 0 0;
+
+  color: #7c83a5;
+
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+
+/* =========================================================
+   REFRESH BUTTON
+========================================================= */
+
+.refresh-btn {
+  border: 0;
+
+  min-width: 125px;
+  height: 46px;
+
+  padding: 0 20px;
+
+  border-radius: 13px;
+
+  background: linear-gradient(
+    135deg,
+    #6366f1,
+    #7c3aed
+  );
+
+  color: white;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  box-shadow:
+    0 10px 25px rgba(99, 102, 241, 0.25);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    opacity 0.2s ease;
+}
+
+
+.refresh-btn:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 14px 30px rgba(99, 102, 241, 0.32);
+}
+
+
+.refresh-btn:active {
+  transform: translateY(0);
+}
+
+
+.refresh-btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+
+.refresh-btn span {
+  font-size: 19px;
+}
+
+
+/* =========================================================
+   STATISTICS
+========================================================= */
+
+.work-stats {
+  width: 100%;
+  max-width: 1100px;
+
+  margin: 0 auto 30px;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap: 18px;
+}
+
+
+.stat-card {
+  position: relative;
+
+  border: 1px solid #e6e8f5;
+
+  min-height: 105px;
+
+  padding: 20px;
+
+  border-radius: 20px;
+
+  background: rgba(255, 255, 255, 0.88);
+
+  box-shadow:
+    0 8px 25px rgba(42, 46, 100, 0.06);
+
+  display: flex;
+  align-items: center;
+
+  gap: 16px;
+
+  text-align: left;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.22s ease,
+    box-shadow 0.22s ease,
+    border 0.22s ease;
+}
+
+
+.stat-card:hover {
+  transform: translateY(-4px);
+
+  box-shadow:
+    0 15px 35px rgba(42, 46, 100, 0.10);
+}
+
+
+.stat-card.active {
+  transform: translateY(-3px);
+}
+
+
+/* Icons */
+
+.stat-icon {
+  width: 55px;
+  height: 55px;
+
+  flex-shrink: 0;
+
+  border-radius: 16px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 24px;
+  font-weight: 800;
+}
+
+
+/* Pending */
+
+.pending-card .stat-icon {
+  background: #fff4d8;
+  color: #d99000;
+}
+
+
+.pending-card.active {
+  border: 2px solid #f3c85b;
+
+  background:
+    linear-gradient(
+      135deg,
+      #fffdf5,
+      #fff9e8
+    );
+}
+
+
+/* Satisfy */
+
+.satisfy-card .stat-icon {
+  background: #dcfce7;
+  color: #16a34a;
+}
+
+
+.satisfy-card.active {
+  border: 2px solid #4ade80;
+
+  background:
+    linear-gradient(
+      135deg,
+      #f8fff9,
+      #edfff3
+    );
+}
+
+
+/* Unsatisfy */
+
+.unsatisfy-card .stat-icon {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+
+.unsatisfy-card.active {
+  border: 2px solid #f87171;
+
+  background:
+    linear-gradient(
+      135deg,
+      #fffafa,
+      #fff1f1
+    );
+}
+
+
+/* Stat content */
+
+.stat-content {
+  display: flex;
+  flex-direction: column;
+
+  gap: 4px;
+}
+
+
+.stat-content span {
+  color: #8188a9;
+
+  font-size: 13px;
+  font-weight: 600;
+}
+
+
+.stat-content strong {
+  color: #171b3a;
+
+  font-size: 27px;
+  font-weight: 800;
+}
+
+
+/* =========================================================
+   ERROR
+========================================================= */
+
+.work-error {
+  width: 100%;
+  max-width: 1100px;
+
+  margin: 0 auto 25px;
+
+  padding: 16px 20px;
+
+  border: 1px solid #fecaca;
+
+  border-radius: 16px;
+
+  background: #fff1f2;
+
+  color: #991b1b;
+
+  display: flex;
+  align-items: flex-start;
+
+  gap: 12px;
+}
+
+
+.work-error > span {
+  width: 28px;
+  height: 28px;
+
+  border-radius: 50%;
+
+  background: #fee2e2;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-weight: 800;
+}
+
+
+.work-error strong {
+  font-size: 14px;
+}
+
+
+.work-error p {
+  margin: 4px 0 0;
+
+  color: #b91c1c;
+
+  font-size: 13px;
+}
+
+
+/* =========================================================
+   LOADING
+========================================================= */
+
+.work-loading {
+  width: 100%;
+  max-width: 1100px;
+
+  min-height: 350px;
+
+  margin: 0 auto;
+
+  border-radius: 24px;
+
+  background: white;
+
+  box-shadow:
+    0 10px 35px rgba(42, 46, 100, 0.07);
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 15px;
+}
+
+
+.loading-spinner {
+  width: 42px;
+  height: 42px;
+
+  border: 4px solid #e8e7ff;
+
+  border-top-color: #6366f1;
+
+  border-radius: 50%;
+
+  animation: mywork-spin 0.8s linear infinite;
+}
+
+
+.work-loading p {
+  margin: 0;
+
+  color: #858ba8;
+
+  font-size: 14px;
+}
+
+
+@keyframes mywork-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* =========================================================
+   EMPTY STATE
+========================================================= */
+
+.empty-work {
+  width: 100%;
+  max-width: 1100px;
+
+  min-height: 400px;
+
+  margin: 0 auto;
+
+  padding: 55px 30px;
+
+  box-sizing: border-box;
+
+  border: 1px solid #e8e9f5;
+
+  border-radius: 25px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #ffffff,
+      #fafaff
+    );
+
+  box-shadow:
+    0 12px 40px rgba(42, 46, 100, 0.07);
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+}
+
+
+.empty-icon {
+  width: 82px;
+  height: 82px;
+
+  margin-bottom: 20px;
+
+  border-radius: 25px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ede9fe,
+      #e0e7ff
+    );
+
+  color: #6366f1;
+
+  font-size: 36px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow:
+    0 12px 30px rgba(99, 102, 241, 0.15);
+}
+
+
+.empty-work h2 {
+  margin: 0;
+
+  color: #171a38;
+
+  font-size: 25px;
+  font-weight: 800;
+}
+
+
+.empty-work p {
+  max-width: 580px;
+
+  margin: 10px 0 24px;
+
+  color: #858ba8;
+
+  font-size: 14px;
+
+  line-height: 1.7;
+}
+
+
+/* =========================================================
+   FIND JOBS BUTTON
+========================================================= */
+
+.find-jobs-btn {
+  border: 0;
+
+  height: 46px;
+
+  padding: 0 22px;
+
+  border-radius: 13px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #6366f1,
+      #7c3aed
+    );
+
+  color: white;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  box-shadow:
+    0 10px 25px rgba(99, 102, 241, 0.25);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+
+.find-jobs-btn:hover {
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 15px 30px rgba(99, 102, 241, 0.32);
+}
+
+
+.find-jobs-btn span {
+  font-size: 18px;
+}
+
+
+/* =========================================================
+   WORK LIST
+========================================================= */
+
+.work-list {
+  width: 100%;
+  max-width: 1100px;
+
+  margin: 0 auto;
+}
+
+
+.work-list-header {
+  margin-bottom: 18px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+
+.list-label {
+  color: #6366f1;
+
+  font-size: 11px;
+  font-weight: 800;
+
+  letter-spacing: 2px;
+}
+
+
+.work-list-header h2 {
+  margin: 4px 0 0;
+
+  color: #171a38;
+
+  font-size: 24px;
+  font-weight: 800;
+}
+
+
+/* =========================================================
+   WORK GRID
+========================================================= */
+
+.work-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 20px;
+}
+
+
+/* =========================================================
+   WORK CARD
+========================================================= */
+
+.work-card {
+  position: relative;
+
+  overflow: hidden;
+
+  padding: 24px;
+
+  border: 1px solid #e7e8f3;
+
+  border-radius: 22px;
+
+  background: white;
+
+  box-shadow:
+    0 8px 30px rgba(42, 46, 100, 0.06);
+
+  transition:
+    transform 0.22s ease,
+    box-shadow 0.22s ease;
+}
+
+
+.work-card::before {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  top: 0;
+
+  width: 100%;
+  height: 4px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #6366f1,
+      #8b5cf6
+    );
+}
+
+
+.work-card:hover {
+  transform: translateY(-5px);
+
+  box-shadow:
+    0 18px 40px rgba(42, 46, 100, 0.11);
+}
+
+
+/* =========================================================
+   CARD TOP
+========================================================= */
+
+.work-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 18px;
+}
+
+
+.job-icon {
+  width: 48px;
+  height: 48px;
+
+  border-radius: 15px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ede9fe,
+      #e0e7ff
+    );
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 21px;
+}
+
+
+/* =========================================================
+   STATUS
+========================================================= */
+
+.work-status {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  min-height: 30px;
+
+  padding: 0 12px;
+
+  border-radius: 999px;
+
+  font-size: 11px;
+
+  font-weight: 800;
+
+  text-transform: capitalize;
+}
+
+
+/* Pending */
+
+.status-pending {
+  color: #a16207;
+
+  background: #fef3c7;
+
+  border: 1px solid #fde68a;
+}
+
+
+/* Satisfy */
+
+.status-satisfy {
+  color: #15803d;
+
+  background: #dcfce7;
+
+  border: 1px solid #bbf7d0;
+}
+
+
+/* Unsatisfy */
+
+.status-unsatisfy {
+  color: #b91c1c;
+
+  background: #fee2e2;
+
+  border: 1px solid #fecaca;
+}
+
+
+/* =========================================================
+   CARD CONTENT
+========================================================= */
+
+.work-card h3 {
+  margin: 0 0 9px;
+
+  color: #171a38;
+
+  font-size: 20px;
+
+  font-weight: 800;
+
+  line-height: 1.3;
+}
+
+
+.work-description {
+  min-height: 47px;
+
+  margin: 0 0 20px;
+
+  color: #7c83a3;
+
+  font-size: 13px;
+
+  line-height: 1.7;
+}
+
+
+/* =========================================================
+   INFO
+========================================================= */
+
+.work-info {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, 1fr);
+
+  gap: 10px;
+
+  padding-top: 17px;
+
+  border-top: 1px solid #eeeeF6;
+}
+
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+
+  gap: 4px;
+}
+
+
+.info-label {
+  color: #9298b3;
+
+  font-size: 11px;
+
+  font-weight: 600;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.6px;
+}
+
+
+.info-item strong {
+  color: #25294a;
+
+  font-size: 15px;
+
+  font-weight: 800;
+}
+
+
+.info-item:first-child strong {
+  color: #6366f1;
+}
+
+
+/* =========================================================
+   REVIEW NOTE
+========================================================= */
+
+.review-note {
+  margin-top: 17px;
+
+  padding: 12px 14px;
+
+  border-radius: 12px;
+
+  background: #f7f7ff;
+
+  display: flex;
+
+  gap: 9px;
+
+  align-items: flex-start;
+}
+
+
+.review-note span {
+  font-size: 15px;
+}
+
+
+.review-note p {
+  margin: 0;
+
+  color: #6f7595;
+
+  font-size: 12px;
+
+  line-height: 1.6;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 900px) {
+
+  .my-work-page {
+    padding: 30px 25px 60px;
+  }
+
+  .work-grid {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+
+@media (max-width: 700px) {
+
+  .my-work-header {
+    flex-direction: column;
+
+    align-items: flex-start;
+  }
+
+  .my-work-header h1 {
+    font-size: 34px;
+  }
+
+  .refresh-btn {
+    width: 100%;
+  }
+
+  .work-stats {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+
+@media (max-width: 480px) {
+
+  .my-work-page {
+    padding: 25px 15px 50px;
+  }
+
+  .my-work-header h1 {
+    font-size: 30px;
+  }
+
+  .my-work-header p {
+    font-size: 13px;
+  }
+
+  .stat-card {
+    min-height: 90px;
+  }
+
+  .work-card {
+    padding: 19px;
+  }
+
+  .work-card h3 {
+    font-size: 18px;
+  }
+
+  .empty-work {
+    padding: 40px 20px;
+  }
+
+}
+/* =========================================
+   MY WORK - MOBILE FIX
+========================================= */
+
+@media (max-width: 600px) {
+
+  .my-work-page {
+    width: 100%;
+    min-width: 0;
+    min-height: 100vh;
+    padding: 25px 12px 50px;
+    box-sizing: border-box;
+    overflow-x: hidden;
+  }
+
+  .my-work-header,
+  .work-stats,
+  .work-error,
+  .work-loading,
+  .empty-work,
+  .work-list {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .my-work-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .my-work-header h1 {
+    font-size: 30px;
+  }
+
+  .my-work-header p {
+    font-size: 13px;
+  }
+
+  .refresh-btn {
+    width: 100%;
+  }
+
+  .work-stats {
+    grid-template-columns: 1fr !important;
+    gap: 14px;
+  }
+
+  .stat-card {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  .work-grid {
+    grid-template-columns: 1fr !important;
+    width: 100%;
+  }
+
+  .work-card {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    padding: 19px;
+  }
+
+  .work-card-top {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .work-card h3 {
+    font-size: 18px;
+    word-break: break-word;
+  }
+
+  .work-description {
+    word-break: break-word;
+  }
+
+  .work-info {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .work-list-header {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+}

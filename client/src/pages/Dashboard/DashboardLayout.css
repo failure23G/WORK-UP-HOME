@@ -1,0 +1,153 @@
+/* =========================================================
+   WORK UP HOME
+   FULL SCREEN DASHBOARD
+   ========================================================= */
+
+:root {
+  --sidebar-width: 255px;
+  --navbar-height: 88px;
+}
+
+/* =========================================================
+   MAIN LAYOUT
+   ========================================================= */
+
+.dashboard-layout {
+  width: 100%;
+  min-height: 100vh;
+
+  background:
+    linear-gradient(
+      135deg,
+      #f6f8fc 0%,
+      #eef2fa 100%
+    );
+
+  overflow-x: hidden;
+}
+
+/* =========================================================
+   CONTENT
+   ========================================================= */
+
+.dashboard-content {
+  width: calc(
+    100% - var(--sidebar-width)
+  );
+
+  min-height:
+    calc(
+      100vh - var(--navbar-height)
+    );
+
+  margin-left:
+    var(--sidebar-width);
+
+  padding: 25px;
+
+  box-sizing: border-box;
+
+  overflow-x: hidden;
+
+  transition:
+    width 0.3s ease,
+    margin-left 0.3s ease;
+}
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+  :root {
+    --sidebar-width: 88px;
+  }
+
+  .dashboard-content {
+    width:
+      calc(
+        100% - var(--sidebar-width)
+      );
+
+    margin-left:
+      var(--sidebar-width);
+
+    padding: 20px;
+  }
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+  :root {
+    --sidebar-width: 0px;
+
+    --navbar-height: 72px;
+  }
+
+  .dashboard-content {
+    width:
+      calc(
+        100% - var(--sidebar-width)
+      );
+
+    margin-left:
+      var(--sidebar-width);
+
+    min-height:
+      calc(
+        100vh - 72px
+      );
+
+    padding: 15px;
+
+    transition:
+      width 0.3s ease,
+      margin-left 0.3s ease;
+  }
+}
+
+/* =========================================================
+   VERY SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 400px) {
+
+  .dashboard-content {
+    padding: 12px;
+  }
+}
+
+/* =========================================================
+   PREVENT OVERFLOW
+   ========================================================= */
+
+.dashboard-layout *,
+.dashboard-layout *::before,
+.dashboard-layout *::after {
+  box-sizing: border-box;
+}
+
+.dashboard-layout img {
+  max-width: 100%;
+  height: auto;
+}
+
+.dashboard-layout
+button,
+.dashboard-layout
+input,
+.dashboard-layout
+select,
+.dashboard-layout
+textarea {
+  max-width: 100%;
+}
+
+.dashboard-content > * {
+  max-width: 100%;
+}

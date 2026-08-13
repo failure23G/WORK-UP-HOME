@@ -1,0 +1,1438 @@
+/* =========================================================
+   WORK UP HOME
+   NAVBAR - FULL RESPONSIVE CSS
+========================================================= */
+
+.navbar {
+  position: fixed;
+
+  top: 0;
+  left: 0;
+  right: 0;
+
+  width: 100%;
+  height: 88px;
+  min-height: 88px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 12px;
+
+  padding: 0 24px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #173ba5 0%,
+      #2858c8 50%,
+      #6d3be8 100%
+    );
+
+  color: #ffffff;
+
+  box-shadow:
+    0 5px 20px rgba(24, 46, 105, 0.18);
+
+  z-index: 5000;
+
+  box-sizing: border-box;
+
+  overflow: visible;
+}
+
+/* =========================================================
+   LEFT / BRAND
+========================================================= */
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  min-width: 0;
+
+  flex: 0 1 auto;
+
+  margin: 0;
+
+  position: relative;
+
+  z-index: 5001;
+}
+
+/* =========================================================
+   MOBILE MENU BUTTON
+========================================================= */
+
+.mobile-menu-button {
+  display: none;
+
+  width: 42px;
+  height: 42px;
+
+  flex: 0 0 42px;
+
+  align-items: center;
+  justify-content: center;
+
+  flex-direction: column;
+
+  gap: 5px;
+
+  padding: 0;
+
+  border: 0;
+  border-radius: 10px;
+
+  background: rgba(255, 255, 255, 0.12);
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.mobile-menu-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.mobile-menu-button:active {
+  transform: scale(0.95);
+}
+
+.mobile-menu-button span {
+  display: block;
+
+  width: 22px;
+  height: 2.5px;
+
+  border-radius: 5px;
+
+  background: #ffffff;
+
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
+}
+
+/* =========================================================
+   BRAND ICON
+========================================================= */
+
+.brand-icon {
+  position: relative;
+
+  width: 52px;
+  height: 52px;
+
+  min-width: 52px;
+  min-height: 52px;
+
+  flex: 0 0 52px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+
+  border-radius: 14px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #33089e,
+      #0e21cb
+    );
+
+  color: #173ba5;
+
+  box-shadow:
+    0 5px 15px rgba(0, 0, 0, 0.16);
+
+  font-weight: 900;
+
+  isolation: isolate;
+}
+
+/* H LOGO */
+
+.brand-h {
+  position: relative;
+
+  z-index: 3;
+
+  color: #edeef0;
+
+  font-size: 29px;
+
+  line-height: 1;
+
+  font-weight: 900;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  user-select: none;
+}
+
+/* =========================================================
+   LOGO EFFECT
+========================================================= */
+
+.brand-icon::before {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    radial-gradient(
+      circle at 30% 25%,
+      rgba(10, 58, 162, 0.8),
+      transparent 32%
+    );
+
+  z-index: 1;
+
+  pointer-events: none;
+}
+
+.brand-icon::after {
+  content: "";
+
+  position: absolute;
+
+  top: -100%;
+  left: -140%;
+
+  width: 55%;
+  height: 300%;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.4),
+      transparent
+    );
+
+  transform: rotate(25deg);
+
+  z-index: 4;
+
+  pointer-events: none;
+
+  animation:
+    hLogoShine 4s ease-in-out infinite;
+}
+
+@keyframes hLogoShine {
+  0%,
+  35% {
+    left: -140%;
+  }
+
+  65%,
+  100% {
+    left: 160%;
+  }
+}
+
+/* =========================================================
+   BRAND NAME
+========================================================= */
+
+.brand-name {
+  min-width: 0;
+
+  color: #ffffff;
+
+  font-size: 21px;
+
+  line-height: 1;
+
+  font-weight: 800;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  letter-spacing: 0.2px;
+
+  white-space: nowrap;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+}
+
+/* =========================================================
+   RIGHT SIDE
+========================================================= */
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  gap: 10px;
+
+  min-width: 0;
+
+  flex: 1 1 auto;
+
+  height: 100%;
+}
+
+/* =========================================================
+   BALANCE BOX
+========================================================= */
+
+.balance-box {
+  height: 42px;
+
+  min-width: 0;
+
+  flex: 0 1 auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 4px;
+
+  padding: 0 15px;
+
+  border-radius: 8px;
+
+  color: #ffffff;
+
+  font-size: 13px;
+
+  font-weight: 700;
+
+  white-space: nowrap;
+
+  overflow: hidden;
+
+  box-shadow:
+    0 3px 8px rgba(0, 0, 0, 0.12);
+}
+
+.balance-box span,
+.balance-box strong {
+  white-space: nowrap;
+}
+
+.balance-box span {
+  font-weight: 700;
+}
+
+.balance-box strong {
+  font-weight: 800;
+}
+
+.earning-box {
+  background: #173ba5;
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.deposit-box {
+  background: #08a82f;
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* =========================================================
+   NOTIFICATION
+========================================================= */
+
+.notification-wrapper {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex: 0 0 auto;
+
+  height: 100%;
+}
+
+.notification-button {
+  position: relative;
+
+  width: 44px;
+  height: 44px;
+
+  flex: 0 0 44px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  border: 0;
+  border-radius: 50%;
+
+  background: transparent;
+
+  color: #ffffff;
+
+  font-size: 22px;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.notification-button:hover {
+  background: rgba(255, 255, 255, 0.12);
+
+  transform: scale(1.05);
+}
+
+.notification-button:active {
+  transform: scale(0.96);
+}
+
+/* =========================================================
+   NOTIFICATION COUNT
+========================================================= */
+
+.notification-count {
+  position: absolute;
+
+  top: 0;
+  right: -1px;
+
+  min-width: 18px;
+  height: 18px;
+
+  padding: 0 5px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 2px solid #3478f6;
+  border-radius: 20px;
+
+  background: #ff3030;
+
+  color: #ffffff;
+
+  font-size: 10px;
+
+  line-height: 1;
+
+  font-weight: 800;
+}
+
+/* =========================================================
+   NOTIFICATION DROPDOWN
+========================================================= */
+
+.notification-dropdown {
+  position: absolute;
+
+  top: 58px;
+  right: -100px;
+
+  width: 360px;
+
+  max-width: calc(100vw - 24px);
+
+  max-height: 75vh;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  background: #ffffff;
+
+  border: 1px solid #e7eaf2;
+
+  border-radius: 14px;
+
+  box-shadow:
+    0 15px 40px rgba(0, 0, 0, 0.18);
+
+  z-index: 6000;
+
+  color: #263253;
+}
+
+/* =========================================================
+   NOTIFICATION HEADER
+========================================================= */
+
+.notification-header {
+  min-height: 62px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 10px;
+
+  padding: 13px 16px;
+
+  border-bottom: 1px solid #edf0f6;
+
+  background: #ffffff;
+}
+
+.notification-header h3 {
+  margin: 0;
+
+  color: #172044;
+
+  font-size: 15px;
+
+  font-weight: 800;
+}
+
+.notification-header button {
+  border: 0;
+
+  background: transparent;
+
+  color: #6d3be8;
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+/* =========================================================
+   NOTIFICATION ITEM
+========================================================= */
+
+.notification-item {
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 11px;
+
+  width: 100%;
+
+  padding: 13px 15px;
+
+  border-bottom: 1px solid #f0f2f7;
+
+  background: #ffffff;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease;
+}
+
+.notification-item:hover {
+  background: #f7f8fc;
+}
+
+.notification-item:last-child {
+  border-bottom: 0;
+}
+
+.notification-item-icon {
+  width: 34px;
+  height: 34px;
+
+  flex: 0 0 34px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 9px;
+
+  background: #eee9ff;
+
+  color: #6d3be8;
+
+  font-size: 15px;
+}
+
+.notification-item-content {
+  min-width: 0;
+
+  flex: 1;
+}
+
+.notification-item-content h4 {
+  margin: 0 0 3px;
+
+  color: #263253;
+
+  font-size: 12px;
+
+  font-weight: 800;
+
+  overflow-wrap: anywhere;
+}
+
+.notification-item-content p {
+  margin: 0;
+
+  color: #7b86a5;
+
+  font-size: 11px;
+
+  line-height: 1.4;
+
+  overflow-wrap: anywhere;
+}
+
+.notification-time {
+  margin-top: 4px;
+
+  color: #a0a8bd;
+
+  font-size: 9px;
+}
+
+/* =========================================================
+   PROFILE
+========================================================= */
+
+.profile-wrapper {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  flex: 0 0 auto;
+
+  height: 100%;
+}
+
+.profile-button {
+  min-width: 180px;
+
+  height: 58px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 9px;
+
+  padding: 4px 7px 4px 5px;
+
+  border: 0;
+  border-radius: 12px;
+
+  background: rgba(255, 255, 255, 0.1);
+
+  color: #ffffff;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease;
+}
+
+.profile-button:hover {
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.profile-avatar {
+  width: 48px;
+  height: 48px;
+
+  min-width: 48px;
+  min-height: 48px;
+
+  flex: 0 0 48px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+
+  border-radius: 50%;
+
+  border: 2px solid rgba(255, 255, 255, 0.35);
+
+  background:
+    linear-gradient(
+      135deg,
+      #ffffff,
+      #e4e8ff
+    );
+
+  color: #315bea;
+
+  font-size: 19px;
+
+  font-weight: 800;
+}
+
+.profile-avatar img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+.profile-info {
+  min-width: 0;
+
+  flex: 1;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: flex-start;
+
+  gap: 3px;
+
+  overflow: hidden;
+}
+
+.profile-name {
+  max-width: 100%;
+
+  color: #ffffff;
+
+  font-size: 13px;
+
+  font-weight: 800;
+
+  white-space: nowrap;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+}
+
+.profile-id {
+  max-width: 100%;
+
+  color: rgba(255, 255, 255, 0.72);
+
+  font-size: 10px;
+
+  white-space: nowrap;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+}
+
+/* =========================================================
+   THREE DOTS
+========================================================= */
+
+.three-dots {
+  width: 25px;
+  height: 42px;
+
+  flex: 0 0 25px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #ffffff;
+
+  font-size: 25px;
+
+  line-height: 1;
+
+  font-weight: 800;
+}
+
+/* =========================================================
+   PROFILE DROPDOWN
+========================================================= */
+
+.profile-dropdown {
+  position: absolute;
+
+  top: 67px;
+  right: 0;
+
+  width: 190px;
+
+  max-width: calc(100vw - 20px);
+
+  padding: 8px;
+
+  background: #ffffff;
+
+  border: 1px solid #e7eaf2;
+
+  border-radius: 12px;
+
+  box-shadow:
+    0 15px 35px rgba(0, 0, 0, 0.18);
+
+  z-index: 6000;
+}
+
+.profile-dropdown button {
+  width: 100%;
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  padding: 0 12px;
+
+  border: 0;
+  border-radius: 8px;
+
+  background: transparent;
+
+  color: #293653;
+
+  font-size: 13px;
+
+  font-weight: 700;
+
+  text-align: left;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease;
+}
+
+.profile-dropdown button:hover {
+  background: #f2f5ff;
+}
+
+.profile-dropdown .logout-button {
+  color: #ef3e4d;
+}
+
+.profile-dropdown .logout-button:hover {
+  background: #fff0f1;
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1050px) {
+  .navbar {
+    height: 78px;
+
+    min-height: 78px;
+
+    padding: 0 16px;
+
+    gap: 8px;
+  }
+
+  .brand-icon {
+    width: 46px;
+    height: 46px;
+
+    min-width: 46px;
+    min-height: 46px;
+
+    flex-basis: 46px;
+  }
+
+  .brand-h {
+    font-size: 26px;
+  }
+
+  .brand-name {
+    font-size: 18px;
+  }
+
+  .navbar-right {
+    gap: 7px;
+  }
+
+  .balance-box {
+    height: 38px;
+
+    padding: 0 10px;
+
+    font-size: 11px;
+  }
+
+  .profile-button {
+    min-width: 150px;
+
+    height: 52px;
+  }
+
+  .profile-avatar {
+    width: 42px;
+    height: 42px;
+
+    min-width: 42px;
+    min-height: 42px;
+
+    flex-basis: 42px;
+  }
+
+  .profile-name {
+    font-size: 12px;
+  }
+
+  .profile-id {
+    font-size: 9px;
+  }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+  .navbar {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+    right: 0;
+
+    width: 100%;
+
+    height: 68px;
+    min-height: 68px;
+
+    padding: 0 10px;
+
+    gap: 7px;
+  }
+
+  .mobile-menu-button {
+    display: flex;
+
+    width: 38px;
+    height: 38px;
+
+    flex-basis: 38px;
+  }
+
+  .navbar-brand {
+    gap: 8px;
+
+    flex: 0 1 auto;
+
+    min-width: 0;
+  }
+
+  .brand-icon {
+    width: 38px;
+    height: 38px;
+
+    min-width: 38px;
+    min-height: 38px;
+
+    flex-basis: 38px;
+
+    border-radius: 10px;
+  }
+
+  .brand-h {
+    font-size: 21px;
+  }
+
+  .brand-name {
+    display: none;
+  }
+
+  .navbar-right {
+    gap: 5px;
+
+    flex: 1 1 auto;
+
+    min-width: 0;
+  }
+
+  /*
+    Keep earning and deposit visible.
+    They shrink safely instead of causing overflow.
+  */
+  .balance-box {
+    height: 34px;
+
+    min-width: 0;
+
+    max-width: 85px;
+
+    padding: 0 7px;
+
+    gap: 2px;
+
+    font-size: 9px;
+
+    border-radius: 6px;
+
+    overflow: hidden;
+  }
+
+  .balance-box span,
+  .balance-box strong {
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+  }
+
+  .notification-button {
+    width: 34px;
+    height: 34px;
+
+    flex-basis: 34px;
+
+    font-size: 18px;
+  }
+
+  .notification-count {
+    top: -1px;
+    right: -2px;
+
+    min-width: 16px;
+    height: 16px;
+
+    font-size: 8px;
+  }
+
+  .profile-button {
+    min-width: 0;
+
+    width: 38px;
+    height: 42px;
+
+    padding: 0;
+
+    gap: 0;
+
+    background: transparent;
+  }
+
+  .profile-avatar {
+    width: 38px;
+    height: 38px;
+
+    min-width: 38px;
+    min-height: 38px;
+
+    flex-basis: 38px;
+
+    font-size: 16px;
+  }
+
+  .profile-info,
+  .three-dots {
+    display: none;
+  }
+
+  .notification-dropdown {
+    top: 48px;
+
+    right: -45px;
+
+    width: 340px;
+
+    max-width: calc(100vw - 20px);
+  }
+
+  .profile-dropdown {
+    top: 49px;
+
+    right: 0;
+
+    width: 180px;
+
+    max-width: calc(100vw - 20px);
+  }
+}
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 500px) {
+  .navbar {
+    padding: 0 8px;
+
+    gap: 5px;
+  }
+
+  .mobile-menu-button {
+    width: 36px;
+    height: 36px;
+
+    flex-basis: 36px;
+  }
+
+  .mobile-menu-button span {
+    width: 19px;
+    height: 2px;
+  }
+
+  .brand-icon {
+    width: 36px;
+    height: 36px;
+
+    min-width: 36px;
+    min-height: 36px;
+
+    flex-basis: 36px;
+  }
+
+  .brand-h {
+    font-size: 20px;
+  }
+
+  .navbar-right {
+    gap: 4px;
+  }
+
+  .balance-box {
+    max-width: 72px;
+
+    height: 32px;
+
+    padding: 0 5px;
+
+    font-size: 8px;
+  }
+
+  .notification-button {
+    width: 32px;
+    height: 32px;
+
+    flex-basis: 32px;
+
+    font-size: 17px;
+  }
+
+  .notification-count {
+    min-width: 15px;
+    height: 15px;
+
+    padding: 0 3px;
+
+    font-size: 7px;
+  }
+
+  .profile-button {
+    width: 34px;
+  }
+
+  .profile-avatar {
+    width: 34px;
+    height: 34px;
+
+    min-width: 34px;
+    min-height: 34px;
+
+    flex-basis: 34px;
+  }
+
+  .notification-dropdown {
+    right: -35px;
+
+    width: 330px;
+
+    max-width: calc(100vw - 16px);
+  }
+}
+
+/* =========================================================
+   420PX AND BELOW
+========================================================= */
+
+@media (max-width: 420px) {
+  .navbar {
+    padding: 0 6px;
+
+    gap: 4px;
+  }
+
+  .mobile-menu-button {
+    width: 34px;
+    height: 34px;
+
+    flex-basis: 34px;
+  }
+
+  .brand-icon {
+    width: 34px;
+    height: 34px;
+
+    min-width: 34px;
+    min-height: 34px;
+
+    flex-basis: 34px;
+  }
+
+  .brand-h {
+    font-size: 18px;
+  }
+
+  .navbar-right {
+    gap: 3px;
+  }
+
+  .balance-box {
+    max-width: 63px;
+
+    height: 30px;
+
+    padding: 0 4px;
+
+    font-size: 7px;
+  }
+
+  .notification-button {
+    width: 30px;
+    height: 30px;
+
+    flex-basis: 30px;
+
+    font-size: 16px;
+  }
+
+  .profile-button {
+    width: 32px;
+  }
+
+  .profile-avatar {
+    width: 32px;
+    height: 32px;
+
+    min-width: 32px;
+    min-height: 32px;
+
+    flex-basis: 32px;
+  }
+
+  .notification-dropdown {
+    right: -28px;
+
+    width: 320px;
+
+    max-width: calc(100vw - 12px);
+  }
+}
+
+/* =========================================================
+   380PX AND BELOW
+========================================================= */
+
+@media (max-width: 380px) {
+  .navbar {
+    padding: 0 5px;
+
+    gap: 3px;
+  }
+
+  .mobile-menu-button {
+    width: 32px;
+    height: 32px;
+
+    flex-basis: 32px;
+  }
+
+  .mobile-menu-button span {
+    width: 17px;
+    height: 2px;
+  }
+
+  .brand-icon {
+    width: 32px;
+    height: 32px;
+
+    min-width: 32px;
+    min-height: 32px;
+
+    flex-basis: 32px;
+
+    border-radius: 8px;
+  }
+
+  .brand-h {
+    font-size: 17px;
+  }
+
+  .navbar-right {
+    gap: 2px;
+  }
+
+  .balance-box {
+    max-width: 58px;
+
+    height: 28px;
+
+    padding: 0 3px;
+
+    font-size: 6.5px;
+
+    border-radius: 5px;
+  }
+
+  .notification-button {
+    width: 28px;
+    height: 28px;
+
+    flex-basis: 28px;
+
+    font-size: 15px;
+  }
+
+  .notification-count {
+    min-width: 14px;
+    height: 14px;
+
+    font-size: 7px;
+
+    border-width: 1px;
+  }
+
+  .profile-button {
+    width: 29px;
+  }
+
+  .profile-avatar {
+    width: 29px;
+    height: 29px;
+
+    min-width: 29px;
+    min-height: 29px;
+
+    flex-basis: 29px;
+
+    font-size: 13px;
+  }
+
+  .notification-dropdown {
+    right: -22px;
+
+    width: 310px;
+
+    max-width: calc(100vw - 10px);
+  }
+}
+
+/* =========================================================
+   340PX AND BELOW
+========================================================= */
+
+@media (max-width: 340px) {
+  .navbar {
+    padding: 0 4px;
+
+    gap: 2px;
+  }
+
+  .mobile-menu-button {
+    width: 30px;
+    height: 30px;
+
+    flex-basis: 30px;
+  }
+
+  .brand-icon {
+    width: 30px;
+    height: 30px;
+
+    min-width: 30px;
+    min-height: 30px;
+
+    flex-basis: 30px;
+  }
+
+  .brand-h {
+    font-size: 16px;
+  }
+
+  .navbar-right {
+    gap: 2px;
+  }
+
+  .balance-box {
+    max-width: 52px;
+
+    height: 27px;
+
+    padding: 0 2px;
+
+    font-size: 6px;
+  }
+
+  .notification-button {
+    width: 27px;
+    height: 27px;
+
+    flex-basis: 27px;
+
+    font-size: 14px;
+  }
+
+  .profile-button {
+    width: 27px;
+  }
+
+  .profile-avatar {
+    width: 27px;
+    height: 27px;
+
+    min-width: 27px;
+    min-height: 27px;
+
+    flex-basis: 27px;
+  }
+}
+
+/* =========================================================
+   SAFETY AGAINST HORIZONTAL OVERFLOW
+========================================================= */
+
+.navbar,
+.navbar * {
+  box-sizing: border-box;
+}
+
+.navbar img,
+.navbar svg {
+  max-width: 100%;
+}
+
+.navbar button {
+  max-width: 100%;
+}
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .navbar *,
+  .navbar {
+    transition: none !important;
+
+    animation: none !important;
+  }
+}

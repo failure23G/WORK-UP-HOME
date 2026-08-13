@@ -1,0 +1,958 @@
+/* ============================================================
+   ADMIN USERS PAGE
+============================================================ */
+
+.users-page {
+  width: 100%;
+  min-height: 100vh;
+  padding: 30px;
+  box-sizing: border-box;
+  background: #f7f9ff;
+}
+
+
+/* ============================================================
+   HEADER
+============================================================ */
+
+.users-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 25px;
+}
+
+.users-header-left {
+  flex: 1;
+}
+
+.users-kicker {
+  margin: 0 0 8px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: #315bea;
+  text-transform: uppercase;
+}
+
+.users-title {
+  margin: 0;
+  font-size: 34px;
+  line-height: 1.15;
+  font-weight: 800;
+  color: #263555;
+}
+
+.users-subtitle {
+  margin: 10px 0 0;
+  color: #8794af;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+
+/* ============================================================
+   REFRESH BUTTON
+============================================================ */
+
+.users-refresh-btn {
+  border: 0;
+  outline: none;
+  cursor: pointer;
+
+  min-height: 44px;
+  padding: 0 20px;
+
+  border-radius: 12px;
+
+  background: linear-gradient(
+    135deg,
+    #315bea,
+    #405de6
+  );
+
+  color: #ffffff;
+
+  font-size: 14px;
+  font-weight: 800;
+
+  box-shadow:
+    0 8px 20px
+    rgba(49, 91, 234, 0.20);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.users-refresh-btn:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 12px 24px
+    rgba(49, 91, 234, 0.28);
+}
+
+.users-refresh-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+
+/* ============================================================
+   ERROR
+============================================================ */
+
+.users-error {
+  width: 100%;
+  box-sizing: border-box;
+
+  padding: 15px 18px;
+  margin-bottom: 20px;
+
+  border: 1px solid #ffd0d6;
+  border-radius: 14px;
+
+  background: #fff0f2;
+
+  color: #d52d45;
+
+  font-size: 14px;
+  font-weight: 700;
+}
+
+
+/* ============================================================
+   STAT CARDS
+============================================================ */
+
+.users-stats {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+
+  gap: 16px;
+
+  margin-bottom: 22px;
+}
+
+.users-stat-card {
+  min-height: 120px;
+
+  padding: 20px;
+
+  box-sizing: border-box;
+
+  background: #ffffff;
+
+  border: 1px solid #e8edf7;
+
+  border-radius: 16px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 15px;
+
+  box-shadow:
+    0 8px 25px
+    rgba(36, 56, 92, 0.05);
+}
+
+.users-stat-icon {
+  width: 52px;
+  height: 52px;
+
+  flex: 0 0 52px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 14px;
+
+  background: #eef3ff;
+
+  font-size: 24px;
+}
+
+.users-stat-content {
+  min-width: 0;
+}
+
+.users-stat-label {
+  margin: 0 0 5px;
+
+  color: #98a4bb;
+
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.users-stat-value {
+  margin: 0;
+
+  color: #263555;
+
+  font-size: 27px;
+  font-weight: 800;
+}
+
+
+/* ============================================================
+   MAIN CARD
+============================================================ */
+
+.users-card {
+  width: 100%;
+
+  background: #ffffff;
+
+  border: 1px solid #e8edf7;
+
+  border-radius: 18px;
+
+  overflow: hidden;
+
+  box-shadow:
+    0 10px 30px
+    rgba(36, 56, 92, 0.06);
+}
+
+
+/* ============================================================
+   CARD HEADER
+============================================================ */
+
+.users-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  padding: 22px 24px;
+
+  border-bottom: 1px solid #edf0f6;
+}
+
+.users-card-title-area {
+  display: flex;
+  align-items: center;
+
+  gap: 14px;
+}
+
+.users-card-icon {
+  width: 48px;
+  height: 48px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 14px;
+
+  background: #eef3ff;
+
+  font-size: 23px;
+}
+
+.users-card-title {
+  margin: 0;
+
+  color: #263555;
+
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.users-card-description {
+  margin: 5px 0 0;
+
+  color: #9aa5ba;
+
+  font-size: 12px;
+}
+
+
+/* ============================================================
+   SEARCH
+============================================================ */
+
+.users-search {
+  width: 310px;
+
+  min-height: 44px;
+
+  padding: 0 15px;
+
+  box-sizing: border-box;
+
+  border: 1px solid #e2e8f3;
+
+  border-radius: 11px;
+
+  outline: none;
+
+  background: #f9fbff;
+
+  color: #263555;
+
+  font-size: 13px;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.users-search::placeholder {
+  color: #a3aec1;
+}
+
+.users-search:focus {
+  border-color: #4a6cf7;
+
+  box-shadow:
+    0 0 0 3px
+    rgba(74, 108, 247, 0.10);
+}
+
+
+/* ============================================================
+   TABLE
+============================================================ */
+
+.users-table-wrapper {
+  width: 100%;
+
+  overflow-x: auto;
+}
+
+.users-table {
+  width: 100%;
+
+  border-collapse: collapse;
+
+  min-width: 850px;
+}
+
+.users-table thead {
+  background: #fafbff;
+}
+
+.users-table th {
+  padding: 15px 18px;
+
+  text-align: left;
+
+  color: #8c98ae;
+
+  font-size: 11px;
+
+  font-weight: 800;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.5px;
+
+  border-bottom: 1px solid #edf0f6;
+}
+
+.users-table td {
+  padding: 16px 18px;
+
+  color: #4d5b77;
+
+  font-size: 13px;
+
+  border-bottom: 1px solid #f0f2f7;
+
+  vertical-align: middle;
+}
+
+.users-table tbody tr {
+  transition:
+    background 0.2s ease;
+}
+
+.users-table tbody tr:hover {
+  background: #fafbff;
+}
+
+.users-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+
+/* ============================================================
+   USER
+============================================================ */
+
+.user-cell {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+}
+
+.user-avatar {
+  width: 43px;
+  height: 43px;
+
+  flex: 0 0 43px;
+
+  border-radius: 12px;
+
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #eef3ff;
+
+  color: #315bea;
+
+  font-size: 15px;
+
+  font-weight: 800;
+}
+
+.user-avatar img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+.user-name {
+  margin: 0;
+
+  color: #263555;
+
+  font-size: 14px;
+
+  font-weight: 800;
+}
+
+.user-email {
+  margin: 3px 0 0;
+
+  color: #9aa5ba;
+
+  font-size: 11px;
+}
+
+
+/* ============================================================
+   USER ID
+============================================================ */
+
+.user-id {
+  display: inline-flex;
+
+  padding: 6px 9px;
+
+  border-radius: 7px;
+
+  background: #f1f4fb;
+
+  color: #53627e;
+
+  font-family: monospace;
+
+  font-size: 11px;
+
+  font-weight: 700;
+}
+
+
+/* ============================================================
+   ROLE
+============================================================ */
+
+.user-role {
+  display: inline-flex;
+
+  padding: 6px 10px;
+
+  border-radius: 20px;
+
+  background: #eef3ff;
+
+  color: #315bea;
+
+  font-size: 11px;
+
+  font-weight: 800;
+
+  text-transform: capitalize;
+}
+
+
+/* ============================================================
+   VERIFIED
+============================================================ */
+
+.user-verified {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 5px;
+
+  padding: 6px 10px;
+
+  border-radius: 20px;
+
+  font-size: 11px;
+
+  font-weight: 800;
+}
+
+.user-verified.yes {
+  background: #e9faf1;
+
+  color: #1c9a5d;
+}
+
+.user-verified.no {
+  background: #fff0f2;
+
+  color: #d52d45;
+}
+
+
+/* ============================================================
+   BALANCE
+============================================================ */
+
+.user-balance {
+  color: #263555;
+
+  font-weight: 800;
+
+  white-space: nowrap;
+}
+
+
+/* ============================================================
+   VIEW PROFILE BUTTON
+============================================================ */
+
+.view-user-btn {
+  border: 1px solid #dce4f4;
+
+  background: #ffffff;
+
+  color: #315bea;
+
+  padding: 8px 13px;
+
+  border-radius: 9px;
+
+  font-size: 12px;
+
+  font-weight: 800;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.view-user-btn:hover {
+  background: #315bea;
+
+  color: #ffffff;
+
+  border-color: #315bea;
+
+  transform: translateY(-1px);
+}
+
+
+/* ============================================================
+   EMPTY STATE
+============================================================ */
+
+.users-empty {
+  padding: 65px 20px;
+
+  text-align: center;
+}
+
+.users-empty-icon {
+  width: 64px;
+  height: 64px;
+
+  margin: 0 auto 14px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 18px;
+
+  background: #eef3ff;
+
+  font-size: 28px;
+}
+
+.users-empty-title {
+  margin: 0 0 7px;
+
+  color: #263555;
+
+  font-size: 17px;
+
+  font-weight: 800;
+}
+
+.users-empty-text {
+  margin: 0;
+
+  color: #9aa5ba;
+
+  font-size: 13px;
+}
+
+
+/* ============================================================
+   LOADING
+============================================================ */
+
+.users-loading {
+  padding: 65px 20px;
+
+  text-align: center;
+
+  color: #7f8ca6;
+
+  font-size: 14px;
+
+  font-weight: 700;
+}
+
+.users-loading-spinner {
+  width: 34px;
+  height: 34px;
+
+  margin: 0 auto 14px;
+
+  border: 3px solid #e5eaf5;
+
+  border-top-color: #315bea;
+
+  border-radius: 50%;
+
+  animation:
+    users-spin
+    0.8s linear infinite;
+}
+
+@keyframes users-spin {
+
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+
+}
+
+
+/* ============================================================
+   PROFILE MODAL
+============================================================ */
+
+.user-profile-overlay {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 9999;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+
+  box-sizing: border-box;
+
+  background:
+    rgba(23, 32, 53, 0.48);
+}
+
+.user-profile-modal {
+  width: 100%;
+
+  max-width: 680px;
+
+  max-height: 90vh;
+
+  overflow-y: auto;
+
+  background: #ffffff;
+
+  border-radius: 20px;
+
+  box-shadow:
+    0 25px 70px
+    rgba(18, 29, 55, 0.25);
+}
+
+.user-profile-header {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 22px 24px;
+
+  border-bottom: 1px solid #edf0f6;
+}
+
+.user-profile-title {
+  margin: 0;
+
+  color: #263555;
+
+  font-size: 19px;
+
+  font-weight: 800;
+}
+
+.user-profile-close {
+  width: 36px;
+  height: 36px;
+
+  border: 0;
+
+  border-radius: 10px;
+
+  background: #f2f4f9;
+
+  color: #68758e;
+
+  cursor: pointer;
+
+  font-size: 18px;
+}
+
+.user-profile-body {
+  padding: 25px;
+}
+
+.user-profile-main {
+  display: flex;
+
+  align-items: center;
+
+  gap: 16px;
+
+  padding-bottom: 22px;
+
+  margin-bottom: 22px;
+
+  border-bottom: 1px solid #edf0f6;
+}
+
+.user-profile-avatar {
+  width: 70px;
+  height: 70px;
+
+  flex: 0 0 70px;
+
+  border-radius: 18px;
+
+  overflow: hidden;
+
+  background: #eef3ff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #315bea;
+
+  font-size: 25px;
+
+  font-weight: 800;
+}
+
+.user-profile-avatar img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+.user-profile-name {
+  margin: 0;
+
+  color: #263555;
+
+  font-size: 21px;
+
+  font-weight: 800;
+}
+
+.user-profile-email {
+  margin: 5px 0 0;
+
+  color: #8995ad;
+
+  font-size: 13px;
+}
+
+
+/* ============================================================
+   PROFILE GRID
+============================================================ */
+
+.user-profile-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 14px;
+}
+
+.user-profile-item {
+  padding: 15px;
+
+  border: 1px solid #e9edf5;
+
+  border-radius: 13px;
+
+  background: #fbfcff;
+}
+
+.user-profile-label {
+  margin: 0 0 6px;
+
+  color: #9aa5ba;
+
+  font-size: 11px;
+
+  font-weight: 800;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.4px;
+}
+
+.user-profile-value {
+  margin: 0;
+
+  color: #34415d;
+
+  font-size: 14px;
+
+  font-weight: 700;
+
+  word-break: break-word;
+}
+
+
+/* ============================================================
+   RESPONSIVE
+============================================================ */
+
+@media (max-width: 1100px) {
+
+  .users-stats {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  .users-card-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .users-search {
+    width: 100%;
+  }
+
+}
+
+
+@media (max-width: 768px) {
+
+  .users-page {
+    padding: 20px 15px;
+  }
+
+  .users-header {
+    flex-direction: column;
+  }
+
+  .users-title {
+    font-size: 28px;
+  }
+
+  .users-refresh-btn {
+    width: 100%;
+  }
+
+  .users-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .users-card-header {
+    padding: 18px;
+  }
+
+  .users-table th,
+  .users-table td {
+    padding: 13px 14px;
+  }
+
+  .user-profile-grid {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+
+@media (max-width: 480px) {
+
+  .users-title {
+    font-size: 24px;
+  }
+
+  .users-subtitle {
+    font-size: 13px;
+  }
+
+  .users-stat-card {
+    min-height: 100px;
+  }
+
+  .users-card-title {
+    font-size: 16px;
+  }
+
+  .user-profile-overlay {
+    padding: 10px;
+  }
+
+  .user-profile-body {
+    padding: 18px;
+  }
+
+}
