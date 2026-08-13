@@ -1,10 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: https://work-up-home.onrender.com/api
-
-  // এখানে Content-Type দেবে না।
-  // Axios নিজে FormData হলে multipart/form-data boundary সেট করবে।
+  baseURL: "https://work-up-home.onrender.com/api",
   withCredentials: true,
 });
 
