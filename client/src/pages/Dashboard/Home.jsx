@@ -6,32 +6,32 @@ const platforms = [
   {
     name: "GMAIL",
     icon: "📧",
-    description: "Find Gmail jobs",
+    description: " Gmail jobs",
   },
   {
     name: "FACEBOOK",
     icon: "📘",
-    description: "Find Facebook jobs",
+    description: " Facebook jobs",
   },
   {
     name: "TIKTOK",
     icon: "🎵",
-    description: "Find TikTok jobs",
+    description: "TikTok jobs",
   },
   {
     name: "INSTAGRAM",
     icon: "📸",
-    description: "Find Instagram jobs",
+    description: " Instagram jobs",
   },
   {
     name: "TELEGRAM",
     icon: "✈️",
-    description: "Find Telegram jobs",
+    description: " Telegram jobs",
   },
   {
     name: "WEBSITE",
     icon: "🌐",
-    description: "Find Website jobs",
+    description: " Website jobs",
   },
 ];
 
