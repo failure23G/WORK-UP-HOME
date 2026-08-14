@@ -2128,48 +2128,43 @@ exports.deleteJob = async (
     });
   }
 };
-    /*
-    --------------------------------------------------------
-    DELETE SUBMISSIONS FIRST
-    --------------------------------------------------------
-    */
-
-    await JobSubmission.deleteMany({
-      job: job._id,
-    });
+    
 
 
     /*
-    --------------------------------------------------------
-    DELETE JOB
-    --------------------------------------------------------
-    */
+--------------------------------------------------------
+DELETE JOB
+--------------------------------------------------------
+*/
+
+exports.deleteJob = async (req, res) => {
+  try {
+    const job = await Job.findById(req.params.id);
+
+    if (!job) {
+      return res.status(404).json({
+        success: false,
+        message: "Job not found",
+      });
+    }
 
     await Job.deleteOne({
       _id: job._id,
     });
 
-
-    return res.json({
+    return res.status(200).json({
       success: true,
-      message:
-        "Job deleted successfully",
+      message: "Job deleted successfully",
     });
-
   } catch (error) {
-    console.error(
-      "Delete job error:",
-      error
-    );
+    console.error("Delete job error:", error);
 
     return res.status(500).json({
       success: false,
-      message:
-        "Failed to delete job",
+      message: "Failed to delete job",
     });
   }
 };
-
 
 /*
 ============================================================
