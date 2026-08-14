@@ -6,6 +6,44 @@ import {
 } from "../../services/authService";
 import "./Profile.css";
 
+const API_URL = "https://work-up-home.onrender.com";
+
+const getUserFromResponse = (response) => {
+  if (!response) return null;
+
+  if (response.user) return response.user;
+
+  if (response.data?.user) return response.data.user;
+
+  if (response.data && !response.data.success) {
+    return response.data;
+  }
+
+  if (response.data?.data) {
+    return response.data.data;
+  }
+
+  if (response.data) {
+    return response.data;
+  }
+
+  return response;
+};
+
+const getImageUrl = (image) => {
+  if (!image) return "";
+
+  if (
+    image.startsWith("http://") ||
+    image.startsWith("https://") ||
+    image.startsWith("blob:")
+  ) {
+    return image;
+  }
+
+  return `${API_URL}${image.startsWith("/") ? "" : "/"}${image}`;
+};
+
 const Profile = () => {
   const [user, setUser] = useState(null);
 
@@ -30,53 +68,85 @@ const Profile = () => {
 
   const fileInputRef = useRef(null);
 
-  // ========================================
-  // LOAD PROFILE
-  // ========================================
+  /* =====================================================
+     LOAD PROFILE
+     ===================================================== */
+
   useEffect(() => {
+    let mounted = true;
+
     const loadProfile = async () => {
       try {
         setLoading(true);
+        setError("");
 
-        const data = await getMe();
+        const response = await getMe();
 
-        const currentUser =
-          data?.user || data?.data || data;
+        const currentUser = getUserFromResponse(response);
+
+        console.log("PROFILE RESPONSE:", response);
+        console.log("CURRENT USER:", currentUser);
+
+        if (!mounted) return;
+
+        if (!currentUser) {
+          throw new Error("User profile data not found");
+        }
 
         setUser(currentUser);
 
         setFormData({
-          name: currentUser?.name || "",
-          email: currentUser?.email || "",
-          phone: currentUser?.phone || "",
-          bio: currentUser?.bio || "",
+          name:
+            currentUser.name ||
+            currentUser.fullName ||
+            "",
+          email: currentUser.email || "",
+          phone:
+            currentUser.phone ||
+            currentUser.mobile ||
+            "",
+          bio: currentUser.bio || "",
         });
 
-        if (currentUser?.profileImage) {
-          setPreviewImage(
-            currentUser.profileImage.startsWith("http")
-              ? currentUser.profileImage
-              : `https://work-up-home.onrender.com${currentUser.profileImage}`
-          );
+        const image =
+          currentUser.profileImage ||
+          currentUser.profile_image ||
+          currentUser.avatar ||
+          "";
+
+        if (image) {
+          setPreviewImage(getImageUrl(image));
+        } else {
+          setPreviewImage("");
         }
       } catch (err) {
         console.error("Failed to load profile:", err);
 
+        if (!mounted) return;
+
         setError(
           err?.response?.data?.message ||
+            err?.message ||
             "Failed to load profile"
         );
       } finally {
-        setLoading(false);
+        if (mounted) {
+          setLoading(false);
+        }
       }
     };
 
     loadProfile();
+
+    return () => {
+      mounted = false;
+    };
   }, []);
 
-  // ========================================
-  // HANDLE TEXT INPUT
-  // ========================================
+  /* =====================================================
+     FORM CHANGE
+     ===================================================== */
+
   const handleChange = (event) => {
     const { name, value } = event.target;
 
@@ -86,23 +156,31 @@ const Profile = () => {
     }));
   };
 
-  // ========================================
-  // START EDIT
-  // ========================================
+  /* =====================================================
+     START EDIT
+     ===================================================== */
+
   const handleEdit = () => {
     setMessage("");
     setError("");
     setEditing(true);
   };
 
-  // ========================================
-  // CANCEL EDIT
-  // ========================================
+  /* =====================================================
+     CANCEL EDIT
+     ===================================================== */
+
   const handleCancel = () => {
     setFormData({
-      name: user?.name || "",
+      name:
+        user?.name ||
+        user?.fullName ||
+        "",
       email: user?.email || "",
-      phone: user?.phone || "",
+      phone:
+        user?.phone ||
+        user?.mobile ||
+        "",
       bio: user?.bio || "",
     });
 
@@ -111,20 +189,18 @@ const Profile = () => {
     setEditing(false);
   };
 
-  // ========================================
-  // SELECT IMAGE
-  // ========================================
+  /* =====================================================
+     IMAGE SELECT
+     ===================================================== */
+
   const handleImageSelect = (event) => {
     const file = event.target.files?.[0];
 
-    if (!file) {
-      return;
-    }
+    if (!file) return;
 
     setMessage("");
     setError("");
 
-    // Check image type
     const allowedTypes = [
       "image/jpeg",
       "image/jpg",
@@ -141,7 +217,6 @@ const Profile = () => {
       return;
     }
 
-    // Check image size
     if (file.size > 5 * 1024 * 1024) {
       setError("Image size must be less than 5MB");
 
@@ -156,9 +231,10 @@ const Profile = () => {
     setPreviewImage(previewUrl);
   };
 
-  // ========================================
-  // UPLOAD IMAGE
-  // ========================================
+  /* =====================================================
+     UPLOAD IMAGE
+     ===================================================== */
+
   const handleImageUpload = async () => {
     if (!selectedImage) {
       setError("Please select an image first");
@@ -167,27 +243,47 @@ const Profile = () => {
 
     try {
       setUploadingImage(true);
-
       setMessage("");
       setError("");
 
-      const data =
+      const response =
         await uploadProfileImage(selectedImage);
 
+      console.log(
+        "PROFILE IMAGE RESPONSE:",
+        response
+      );
+
       const updatedUser =
-        data?.user || data?.data;
+        getUserFromResponse(response);
 
       if (updatedUser) {
         setUser(updatedUser);
+
+        setFormData({
+          name:
+            updatedUser.name ||
+            updatedUser.fullName ||
+            "",
+          email: updatedUser.email || "",
+          phone:
+            updatedUser.phone ||
+            updatedUser.mobile ||
+            "",
+          bio: updatedUser.bio || "",
+        });
       }
 
-      if (data?.profileImage) {
-        const imageUrl =
-          data.profileImage.startsWith("http")
-            ? data.profileImage
-            : `https://work-up-home.onrender.com${data.profileImage}`;
+      const uploadedImage =
+        response?.profileImage ||
+        response?.data?.profileImage ||
+        response?.user?.profileImage ||
+        updatedUser?.profileImage;
 
-        setPreviewImage(imageUrl);
+      if (uploadedImage) {
+        setPreviewImage(
+          getImageUrl(uploadedImage)
+        );
       }
 
       setSelectedImage(null);
@@ -197,7 +293,7 @@ const Profile = () => {
       }
 
       setMessage(
-        data?.message ||
+        response?.message ||
           "Profile picture uploaded successfully"
       );
     } catch (err) {
@@ -208,6 +304,7 @@ const Profile = () => {
 
       setError(
         err?.response?.data?.message ||
+          err?.message ||
           "Failed to upload profile picture"
       );
     } finally {
@@ -215,21 +312,54 @@ const Profile = () => {
     }
   };
 
-  // ========================================
-  // SAVE PROFILE
-  // ========================================
+  /* =====================================================
+     REMOVE SELECTED IMAGE
+     ===================================================== */
+
+  const handleRemoveSelectedImage = () => {
+    setSelectedImage(null);
+
+    if (fileInputRef.current) {
+      fileInputRef.current.value = "";
+    }
+
+    const existingImage =
+      user?.profileImage ||
+      user?.profile_image ||
+      user?.avatar ||
+      "";
+
+    setPreviewImage(
+      existingImage
+        ? getImageUrl(existingImage)
+        : ""
+    );
+
+    setMessage("");
+    setError("");
+  };
+
+  /* =====================================================
+     SAVE PROFILE
+     ===================================================== */
+
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     setMessage("");
     setError("");
 
-    if (!formData.name.trim()) {
+    const cleanName = formData.name.trim();
+    const cleanEmail = formData.email.trim();
+    const cleanPhone = formData.phone.trim();
+    const cleanBio = formData.bio.trim();
+
+    if (!cleanName) {
       setError("Name is required");
       return;
     }
 
-    if (!formData.email.trim()) {
+    if (!cleanEmail) {
       setError("Email is required");
       return;
     }
@@ -237,29 +367,47 @@ const Profile = () => {
     try {
       setSaving(true);
 
-      const data = await updateProfile({
-        name: formData.name.trim(),
-        email: formData.email.trim(),
-        phone: formData.phone.trim(),
-        bio: formData.bio.trim(),
+      const response = await updateProfile({
+        name: cleanName,
+        email: cleanEmail,
+        phone: cleanPhone,
+        bio: cleanBio,
       });
 
+      console.log(
+        "UPDATE PROFILE RESPONSE:",
+        response
+      );
+
       const updatedUser =
-        data?.user || data?.data || data;
+        getUserFromResponse(response);
+
+      if (!updatedUser) {
+        throw new Error(
+          "Profile was updated but user data was not returned"
+        );
+      }
 
       setUser(updatedUser);
 
       setFormData({
-        name: updatedUser?.name || "",
-        email: updatedUser?.email || "",
-        phone: updatedUser?.phone || "",
-        bio: updatedUser?.bio || "",
+        name:
+          updatedUser.name ||
+          updatedUser.fullName ||
+          "",
+        email: updatedUser.email || "",
+        phone:
+          updatedUser.phone ||
+          updatedUser.mobile ||
+          "",
+        bio: updatedUser.bio || "",
       });
 
       setEditing(false);
 
       setMessage(
-        data?.message ||
+        response?.message ||
+          response?.data?.message ||
           "Profile updated successfully"
       );
     } catch (err) {
@@ -270,6 +418,7 @@ const Profile = () => {
 
       setError(
         err?.response?.data?.message ||
+          err?.message ||
           "Failed to update profile"
       );
     } finally {
@@ -277,79 +426,107 @@ const Profile = () => {
     }
   };
 
-  // ========================================
-  // LOADING
-  // ========================================
+  /* =====================================================
+     LOADING
+     ===================================================== */
+
   if (loading) {
     return (
-      <div className="profile-page">
-        <div className="profile-loading">
-          Loading profile...
+      <div className="wuh-profile-page">
+        <div className="wuh-profile-loading">
+          <div className="wuh-spinner"></div>
+          <span>Loading profile...</span>
         </div>
       </div>
     );
   }
 
-  // ========================================
-  // USER DATA
-  // ========================================
+  /* =====================================================
+     USER DATA
+     ===================================================== */
+
   const userName =
-    user?.name || user?.fullName || "User";
+    user?.name ||
+    user?.fullName ||
+    "User";
 
-  const initial = userName
-    .charAt(0)
-    .toUpperCase();
+  const userEmail =
+    user?.email ||
+    "Not available";
 
-  // ========================================
-  // PROFILE PAGE
-  // ========================================
+  const userPhone =
+    user?.phone ||
+    user?.mobile ||
+    "Not added";
+
+  const userBio =
+    user?.bio ||
+    "No bio added yet.";
+
+  const initial =
+    userName.charAt(0).toUpperCase();
+
+  /* =====================================================
+     PROFILE
+     ===================================================== */
+
   return (
-    <div className="profile-page">
-      <div className="profile-header">
-        <div>
-          <h1>My Profile</h1>
+    <div className="wuh-profile-page">
 
-          <p>
-            View and manage your personal information.
-          </p>
-        </div>
+      {/* ================= HEADER ================= */}
+
+      <div className="wuh-profile-header">
+        <h1>My Profile</h1>
+
+        <p>
+          View and manage your personal information.
+        </p>
       </div>
 
-      {/* SUCCESS MESSAGE */}
+      {/* ================= MESSAGE ================= */}
+
       {message && (
-        <div className="profile-message success">
+        <div className="wuh-profile-message wuh-success">
           {message}
         </div>
       )}
 
-      {/* ERROR MESSAGE */}
       {error && (
-        <div className="profile-message error">
+        <div className="wuh-profile-message wuh-error">
           {error}
         </div>
       )}
 
-      <div className="profile-card">
-        {/* ========================================
-            PROFILE TOP
-        ======================================== */}
+      {/* ================= CARD ================= */}
 
-        <div className="profile-top">
-          <div className="profile-avatar-wrapper">
-            <div className="profile-avatar">
+      <div className="wuh-profile-card">
+
+        {/* ================= TOP ================= */}
+
+        <div className="wuh-profile-top">
+
+          <div className="wuh-avatar-area">
+
+            <div className="wuh-avatar">
+
               {previewImage ? (
                 <img
                   src={previewImage}
                   alt="Profile"
+                  onError={(event) => {
+                    event.currentTarget.style.display =
+                      "none";
+                  }}
                 />
               ) : (
                 <span>{initial}</span>
               )}
+
             </div>
 
             <button
               type="button"
-              className="change-photo-btn"
+              className="wuh-change-photo"
               onClick={() =>
                 fileInputRef.current?.click()
               }
@@ -363,27 +540,28 @@ const Profile = () => {
               type="file"
               accept="image/jpeg,image/jpg,image/png,image/webp"
               onChange={handleImageSelect}
-              className="profile-file-input"
+              className="wuh-file-input"
             />
+
           </div>
 
-          <div className="profile-name">
+          <div className="wuh-user-heading">
+
             <h2>{userName}</h2>
 
-            <p>
-              {user?.email ||
-                "No email available"}
-            </p>
+            <p>{userEmail}</p>
+
           </div>
+
         </div>
 
-        {/* ========================================
-            SELECTED IMAGE UPLOAD
-        ======================================== */}
+        {/* ================= IMAGE UPLOAD ================= */}
 
         {selectedImage && (
-          <div className="image-upload-box">
-            <div>
+          <div className="wuh-upload-box">
+
+            <div className="wuh-upload-info">
+
               <strong>
                 {selectedImage.name}
               </strong>
@@ -391,12 +569,14 @@ const Profile = () => {
               <span>
                 Ready to upload
               </span>
+
             </div>
 
-            <div className="image-upload-actions">
+            <div className="wuh-upload-actions">
+
               <button
                 type="button"
-                className="upload-image-btn"
+                className="wuh-upload-btn"
                 onClick={handleImageUpload}
                 disabled={uploadingImage}
               >
@@ -407,203 +587,240 @@ const Profile = () => {
 
               <button
                 type="button"
-                className="remove-image-btn"
-                onClick={() => {
-                  setSelectedImage(null);
-
-                  if (fileInputRef.current) {
-                    fileInputRef.current.value = "";
-                  }
-
-                  if (user?.profileImage) {
-                    setPreviewImage(
-                      user.profileImage.startsWith(
-                        "http"
-                      )
-                        ? user.profileImage
-                        : `https://work-up-home.onrender.com${user.profileImage}`
-                    );
-                  } else {
-                    setPreviewImage("");
-                  }
-                }}
+                className="wuh-remove-btn"
+                onClick={
+                  handleRemoveSelectedImage
+                }
                 disabled={uploadingImage}
               >
                 Remove
               </button>
+
             </div>
+
           </div>
         )}
 
+        {/* =================================================
+            VIEW PROFILE
+        ================================================= */}
+
         {!editing ? (
           <>
-            {/* ========================================
-                VIEW PROFILE
-            ======================================== */}
 
-            <div className="profile-info">
-              <div className="profile-field">
-                <span className="field-label">
+            <div className="wuh-profile-info">
+
+              {/* FULL NAME */}
+
+              <div className="wuh-info-box">
+
+                <span className="wuh-info-label">
                   Full Name
                 </span>
 
                 <strong>
                   {userName}
                 </strong>
+
               </div>
 
-              <div className="profile-field">
-                <span className="field-label">
+              {/* EMAIL */}
+
+              <div className="wuh-info-box">
+
+                <span className="wuh-info-label">
                   Email
                 </span>
 
                 <strong>
-                  {user?.email ||
-                    "Not available"}
+                  {userEmail}
                 </strong>
+
               </div>
 
-              <div className="profile-field">
-                <span className="field-label">
+              {/* PHONE */}
+
+              <div className="wuh-info-box">
+
+                <span className="wuh-info-label">
                   Phone
                 </span>
 
                 <strong>
-                  {user?.phone ||
-                    "Not added"}
+                  {userPhone}
                 </strong>
+
               </div>
 
-              <div className="profile-field">
-                <span className="field-label">
+              {/* ACCOUNT STATUS */}
+
+              <div className="wuh-info-box">
+
+                <span className="wuh-info-label">
                   Account Status
                 </span>
 
-                <strong className="status-active">
+                <strong className="wuh-active">
                   Active
                 </strong>
+
               </div>
 
-              <div className="profile-field profile-bio">
-                <span className="field-label">
+              {/* BIO */}
+
+              <div className="wuh-info-box wuh-bio-box">
+
+                <span className="wuh-info-label">
                   Bio
                 </span>
 
                 <strong>
-                  {user?.bio ||
-                    "No bio added yet."}
+                  {userBio}
                 </strong>
+
               </div>
+
             </div>
 
-            <div className="profile-actions">
+            {/* EDIT BUTTON */}
+
+            <div className="wuh-profile-actions">
+
               <button
                 type="button"
-                className="edit-profile-btn"
+                className="wuh-edit-btn"
                 onClick={handleEdit}
               >
                 Edit Profile
               </button>
+
             </div>
+
           </>
         ) : (
-          <>
-            {/* ========================================
-                EDIT PROFILE
-            ======================================== */}
 
-            <form
-              className="profile-form"
-              onSubmit={handleSubmit}
-            >
-              <div className="form-group">
-                <label htmlFor="name">
-                  Full Name
-                </label>
+          /* =================================================
+             EDIT PROFILE
+          ================================================= */
 
-                <input
-                  id="name"
-                  name="name"
-                  type="text"
-                  value={formData.name}
-                  onChange={handleChange}
-                  placeholder="Enter your name"
-                />
-              </div>
+          <form
+            className="wuh-profile-form"
+            onSubmit={handleSubmit}
+          >
 
-              <div className="form-group">
-                <label htmlFor="email">
-                  Email
-                </label>
+            {/* NAME */}
 
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  placeholder="Enter your email"
-                />
-              </div>
+            <div className="wuh-form-group">
 
-              <div className="form-group">
-                <label htmlFor="phone">
-                  Phone
-                </label>
+              <label htmlFor="profile-name">
+                Full Name
+              </label>
 
-                <input
-                  id="phone"
-                  name="phone"
-                  type="tel"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  placeholder="Enter your phone number"
-                />
-              </div>
+              <input
+                id="profile-name"
+                name="name"
+                type="text"
+                value={formData.name}
+                onChange={handleChange}
+                placeholder="Enter your name"
+                autoComplete="name"
+              />
 
-              <div className="form-group full-width">
-                <label htmlFor="bio">
-                  Bio
-                </label>
+            </div>
 
-                <textarea
-                  id="bio"
-                  name="bio"
-                  value={formData.bio}
-                  onChange={handleChange}
-                  placeholder="Tell us about yourself..."
-                  rows="5"
-                  maxLength="500"
-                />
+            {/* EMAIL */}
 
-                <span className="character-count">
-                  {formData.bio.length}/500
-                </span>
-              </div>
+            <div className="wuh-form-group">
 
-              <div className="profile-form-actions">
-                <button
-                  type="button"
-                  className="cancel-btn"
-                  onClick={handleCancel}
-                  disabled={saving}
-                >
-                  Cancel
-                </button>
+              <label htmlFor="profile-email">
+                Email
+              </label>
 
-                <button
-                  type="submit"
-                  className="save-profile-btn"
-                  disabled={saving}
-                >
-                  {saving
-                    ? "Saving..."
-                    : "Save Changes"}
-                </button>
-              </div>
-            </form>
-          </>
+              <input
+                id="profile-email"
+                name="email"
+                type="email"
+                value={formData.email}
+                onChange={handleChange}
+                placeholder="Enter your email"
+                autoComplete="email"
+              />
+
+            </div>
+
+            {/* PHONE */}
+
+            <div className="wuh-form-group">
+
+              <label htmlFor="profile-phone">
+                Phone
+              </label>
+
+              <input
+                id="profile-phone"
+                name="phone"
+                type="tel"
+                value={formData.phone}
+                onChange={handleChange}
+                placeholder="Enter your phone number"
+                autoComplete="tel"
+              />
+
+            </div>
+
+            {/* BIO */}
+
+            <div className="wuh-form-group wuh-full-width">
+
+              <label htmlFor="profile-bio">
+                Bio
+              </label>
+
+              <textarea
+                id="profile-bio"
+                name="bio"
+                value={formData.bio}
+                onChange={handleChange}
+                placeholder="Tell us about yourself..."
+                rows={5}
+                maxLength={500}
+              />
+
+              <span className="wuh-character-count">
+                {formData.bio.length}/500
+              </span>
+
+            </div>
+
+            {/* FORM BUTTONS */}
+
+            <div className="wuh-form-actions">
+
+              <button
+                type="button"
+                className="wuh-cancel-btn"
+                onClick={handleCancel}
+                disabled={saving}
+              >
+                Cancel
+              </button>
+
+              <button
+                type="submit"
+                className="wuh-save-btn"
+                disabled={saving}
+              >
+                {saving
+                  ? "Saving..."
+                  : "Save Changes"}
+              </button>
+
+            </div>
+
+          </form>
+
         )}
+
       </div>
     </div>
   );

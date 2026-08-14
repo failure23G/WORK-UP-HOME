@@ -1,11 +1,12 @@
 /* =========================================================
-   WORK UP HOME - PROFILE PAGE
-   Clean responsive profile design
+   WORK UP HOME
+   PROFILE PAGE
+   COMPLETE CLEAN CSS
    ========================================================= */
 
-.profile-page {
+.wuh-profile-page {
   width: 100%;
-  max-width: 1100px;
+  max-width: 1050px;
   margin: 0 auto;
   padding: 30px;
   box-sizing: border-box;
@@ -15,74 +16,87 @@
    HEADER
    ========================================================= */
 
-.profile-header {
-  width: 100%;
+.wuh-profile-header {
   margin-bottom: 24px;
 }
 
-.profile-header h1 {
+.wuh-profile-header h1 {
   margin: 0 0 8px;
-  color: #1e293b;
+
+  color: #1e2b55;
+
   font-size: 30px;
-  font-weight: 800;
   line-height: 1.2;
+  font-weight: 800;
 }
 
-.profile-header p {
+.wuh-profile-header p {
   margin: 0;
+
   color: #64748b;
+
   font-size: 15px;
+  line-height: 1.5;
 }
 
 /* =========================================================
-   MESSAGES
+   MESSAGE
    ========================================================= */
 
-.profile-message {
+.wuh-profile-message {
   width: 100%;
-  margin: 0 0 18px;
+
+  margin-bottom: 18px;
   padding: 13px 16px;
+
   border-radius: 10px;
+
   box-sizing: border-box;
+
   font-size: 14px;
   font-weight: 600;
 }
 
-.profile-message.success {
-  color: #166534;
+.wuh-success {
   background: #dcfce7;
   border: 1px solid #bbf7d0;
+  color: #166534;
 }
 
-.profile-message.error {
-  color: #991b1b;
+.wuh-error {
   background: #fee2e2;
   border: 1px solid #fecaca;
+  color: #991b1b;
 }
 
 /* =========================================================
    MAIN CARD
    ========================================================= */
 
-.profile-card {
+.wuh-profile-card {
   width: 100%;
   max-width: 900px;
+
   margin: 0 auto;
+
   padding: 34px;
+
   box-sizing: border-box;
 
   background: #ffffff;
-  border: 1px solid #e8edf7;
+
+  border: 1px solid #e5eaf3;
   border-radius: 22px;
 
-  box-shadow: 0 12px 40px rgba(30, 41, 59, 0.08);
+  box-shadow:
+    0 12px 40px rgba(15, 23, 42, 0.08);
 }
 
 /* =========================================================
    PROFILE TOP
    ========================================================= */
 
-.profile-top {
+.wuh-profile-top {
   width: 100%;
 
   display: flex;
@@ -92,29 +106,27 @@
 
   padding-bottom: 28px;
 
-  border-bottom: 1px solid #e7ebf3;
-
   box-sizing: border-box;
+
+  border-bottom: 1px solid #e5e7eb;
 }
 
 /* =========================================================
-   AVATAR
+   AVATAR AREA
    ========================================================= */
 
-.profile-avatar-wrapper {
+.wuh-avatar-area {
   flex: 0 0 auto;
 
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  width: 110px;
 }
 
-.profile-avatar {
-  width: 96px;
-  height: 96px;
-  min-width: 96px;
+.wuh-avatar {
+  width: 100px;
+  height: 100px;
+  min-width: 100px;
 
   display: flex;
   align-items: center;
@@ -123,6 +135,7 @@
   overflow: hidden;
 
   border-radius: 50%;
+
   border: 4px solid #ffffff;
 
   background: linear-gradient(
@@ -140,7 +153,7 @@
     0 5px 18px rgba(37, 99, 235, 0.25);
 }
 
-.profile-avatar img {
+.wuh-avatar img {
   width: 100%;
   height: 100%;
 
@@ -153,79 +166,82 @@
    CHANGE PHOTO
    ========================================================= */
 
-.change-photo-btn {
+.wuh-change-photo {
   margin-top: 9px;
 
   padding: 0;
 
   border: none;
-  outline: none;
 
   background: transparent;
 
   color: #2563eb;
 
   font-family: inherit;
+
   font-size: 12px;
   font-weight: 700;
 
   cursor: pointer;
 }
 
-.change-photo-btn:hover {
+.wuh-change-photo:hover {
   color: #1d4ed8;
+
   text-decoration: underline;
 }
 
-.change-photo-btn:disabled {
+.wuh-change-photo:disabled {
   color: #94a3b8;
+
   cursor: not-allowed;
 }
 
-.profile-file-input {
+.wuh-file-input {
   display: none;
 }
 
 /* =========================================================
-   NAME + EMAIL
+   USER NAME
    ========================================================= */
 
-.profile-name {
+.wuh-user-heading {
   min-width: 0;
+
   flex: 1;
 }
 
-.profile-name h2 {
+.wuh-user-heading h2 {
   margin: 0 0 7px;
 
   color: #1e2b55;
 
   font-size: 30px;
-  font-weight: 800;
-
   line-height: 1.2;
+
+  font-weight: 800;
 
   word-break: break-word;
 }
 
-.profile-name p {
+.wuh-user-heading p {
   margin: 0;
 
-  color: #68748f;
+  color: #64748b;
 
   font-size: 15px;
-  font-weight: 600;
+  line-height: 1.5;
 
-  line-height: 1.4;
+  font-weight: 600;
 
   word-break: break-word;
 }
 
 /* =========================================================
-   IMAGE UPLOAD BOX
+   IMAGE UPLOAD
    ========================================================= */
 
-.image-upload-box {
+.wuh-upload-box {
   width: 100%;
 
   display: flex;
@@ -234,7 +250,7 @@
 
   gap: 20px;
 
-  margin-top: 22px;
+  margin-top: 20px;
   padding: 16px 18px;
 
   box-sizing: border-box;
@@ -242,10 +258,11 @@
   background: #f8fafc;
 
   border: 1px solid #dbeafe;
+
   border-radius: 12px;
 }
 
-.image-upload-box > div:first-child {
+.wuh-upload-info {
   min-width: 0;
 
   display: flex;
@@ -254,7 +271,7 @@
   gap: 5px;
 }
 
-.image-upload-box strong {
+.wuh-upload-info strong {
   color: #334155;
 
   font-size: 14px;
@@ -264,16 +281,17 @@
   white-space: nowrap;
 }
 
-.image-upload-box span {
+.wuh-upload-info span {
   color: #64748b;
+
   font-size: 12px;
 }
 
 /* =========================================================
-   IMAGE BUTTONS
+   UPLOAD BUTTONS
    ========================================================= */
 
-.image-upload-actions {
+.wuh-upload-actions {
   flex: 0 0 auto;
 
   display: flex;
@@ -282,8 +300,8 @@
   gap: 10px;
 }
 
-.upload-image-btn,
-.remove-image-btn {
+.wuh-upload-btn,
+.wuh-remove-btn {
   min-height: 42px;
 
   padding: 10px 17px;
@@ -291,6 +309,7 @@
   border-radius: 9px;
 
   font-family: inherit;
+
   font-size: 13px;
   font-weight: 700;
 
@@ -299,94 +318,104 @@
   box-sizing: border-box;
 }
 
-.upload-image-btn {
+.wuh-upload-btn {
   border: none;
 
   background: #2563eb;
+
   color: #ffffff;
 }
 
-.upload-image-btn:hover {
+.wuh-upload-btn:hover {
   background: #1d4ed8;
 }
 
-.upload-image-btn:disabled {
+.wuh-upload-btn:disabled {
   background: #93c5fd;
+
   cursor: not-allowed;
 }
 
-.remove-image-btn {
+.wuh-remove-btn {
   border: 1px solid #cbd5e1;
 
   background: #ffffff;
+
   color: #475569;
 }
 
-.remove-image-btn:hover {
+.wuh-remove-btn:hover {
   background: #f8fafc;
+
   border-color: #94a3b8;
 }
 
+.wuh-remove-btn:disabled {
+  opacity: 0.6;
+
+  cursor: not-allowed;
+}
+
 /* =========================================================
-   PROFILE INFORMATION
+   INFORMATION GRID
    ========================================================= */
 
-.profile-info {
-  width: 100% !important;
+.wuh-profile-info {
+  width: 100%;
 
-  display: grid !important;
+  display: grid;
 
   grid-template-columns:
     minmax(0, 1fr)
-    minmax(0, 1fr) !important;
+    minmax(0, 1fr);
 
   gap: 18px;
 
-  margin: 0;
   padding: 28px 0;
 
   box-sizing: border-box;
 }
 
 /* =========================================================
-   INFORMATION CARD
+   INFORMATION BOX
    ========================================================= */
 
-.profile-field {
-  width: 100% !important;
-  min-width: 0 !important;
-  min-height: 82px;
+.wuh-info-box {
+  width: 100%;
+  min-width: 0;
+  min-height: 86px;
 
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: center !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 
   padding: 17px 18px;
 
   box-sizing: border-box;
 
-  background: #f7f9ff;
+  background: #f8faff;
 
-  border: 1px solid #e3e9f5;
+  border: 1px solid #e2e8f0;
+
   border-radius: 14px;
 
   overflow: hidden;
 }
 
-.field-label {
+.wuh-info-label {
   display: block;
 
-  margin: 0 0 7px;
+  margin-bottom: 7px;
 
-  color: #71809b;
+  color: #64748b;
 
   font-size: 12px;
-  font-weight: 700;
-
   line-height: 1.3;
+
+  font-weight: 700;
 }
 
-.profile-field strong {
+.wuh-info-box strong {
   display: block;
 
   width: 100%;
@@ -394,22 +423,22 @@
 
   margin: 0;
 
-  color: #1d2b4f;
+  color: #1e293b;
 
   font-size: 15px;
-  font-weight: 800;
-
   line-height: 1.45;
+
+  font-weight: 800;
 
   word-break: break-word;
   overflow-wrap: anywhere;
 }
 
 /* =========================================================
-   ACCOUNT STATUS
+   ACTIVE STATUS
    ========================================================= */
 
-.profile-field .status-active {
+.wuh-info-box .wuh-active {
   color: #16a34a !important;
 }
 
@@ -417,40 +446,38 @@
    BIO
    ========================================================= */
 
-.profile-bio {
-  width: 100% !important;
-
-  grid-column: 1 / -1 !important;
+.wuh-bio-box {
+  grid-column: 1 / -1;
 }
 
-.profile-bio strong {
+.wuh-bio-box strong {
   line-height: 1.6;
 }
 
 /* =========================================================
-   EDIT BUTTON
+   EDIT ACTION
    ========================================================= */
 
-.profile-actions {
+.wuh-profile-actions {
   width: 100%;
 
   display: flex;
 
   justify-content: flex-end;
 
-  margin: 0;
   padding-top: 2px;
 
   box-sizing: border-box;
 }
 
-.edit-profile-btn {
+.wuh-edit-btn {
   min-width: 155px;
   min-height: 46px;
 
   padding: 12px 24px;
 
   border: none;
+
   border-radius: 10px;
 
   background: linear-gradient(
@@ -462,6 +489,7 @@
   color: #ffffff;
 
   font-family: inherit;
+
   font-size: 14px;
   font-weight: 800;
 
@@ -475,7 +503,7 @@
     box-shadow 0.2s ease;
 }
 
-.edit-profile-btn:hover {
+.wuh-edit-btn:hover {
   transform: translateY(-1px);
 
   box-shadow:
@@ -486,7 +514,7 @@
    EDIT FORM
    ========================================================= */
 
-.profile-form {
+.wuh-profile-form {
   width: 100%;
 
   display: grid;
@@ -502,7 +530,7 @@
   box-sizing: border-box;
 }
 
-.form-group {
+.wuh-form-group {
   width: 100%;
   min-width: 0;
 
@@ -510,12 +538,12 @@
   flex-direction: column;
 }
 
-.form-group.full-width {
+.wuh-full-width {
   grid-column: 1 / -1;
 }
 
-.form-group label {
-  margin: 0 0 8px;
+.wuh-form-group label {
+  margin-bottom: 8px;
 
   color: #334155;
 
@@ -523,8 +551,8 @@
   font-weight: 700;
 }
 
-.form-group input,
-.form-group textarea {
+.wuh-form-group input,
+.wuh-form-group textarea {
   width: 100%;
   max-width: 100%;
 
@@ -533,12 +561,15 @@
   box-sizing: border-box;
 
   border: 1px solid #cbd5e1;
+
   border-radius: 9px;
 
   background: #ffffff;
+
   color: #1e293b;
 
   font-family: inherit;
+
   font-size: 14px;
 
   outline: none;
@@ -548,11 +579,11 @@
     box-shadow 0.2s ease;
 }
 
-.form-group input {
+.wuh-form-group input {
   height: 48px;
 }
 
-.form-group textarea {
+.wuh-form-group textarea {
   min-height: 125px;
 
   resize: vertical;
@@ -560,16 +591,16 @@
   line-height: 1.5;
 }
 
-.form-group input:focus,
-.form-group textarea:focus {
+.wuh-form-group input:focus,
+.wuh-form-group textarea:focus {
   border-color: #2563eb;
 
   box-shadow:
     0 0 0 3px rgba(37, 99, 235, 0.12);
 }
 
-.form-group input::placeholder,
-.form-group textarea::placeholder {
+.wuh-form-group input::placeholder,
+.wuh-form-group textarea::placeholder {
   color: #94a3b8;
 }
 
@@ -577,7 +608,7 @@
    CHARACTER COUNT
    ========================================================= */
 
-.character-count {
+.wuh-character-count {
   align-self: flex-end;
 
   margin-top: 6px;
@@ -591,7 +622,7 @@
    FORM ACTIONS
    ========================================================= */
 
-.profile-form-actions {
+.wuh-form-actions {
   grid-column: 1 / -1;
 
   display: flex;
@@ -600,53 +631,73 @@
 
   gap: 12px;
 
-  padding-top: 5px;
+  padding-top: 4px;
 }
 
-.cancel-btn,
-.save-profile-btn {
+/* =========================================================
+   CANCEL
+   ========================================================= */
+
+.wuh-cancel-btn {
+  min-width: 105px;
   min-height: 46px;
 
   padding: 12px 22px;
 
+  border: 1px solid #cbd5e1;
+
   border-radius: 9px;
 
+  background: #ffffff;
+
+  color: #475569;
+
   font-family: inherit;
+
   font-size: 14px;
   font-weight: 700;
 
   cursor: pointer;
 }
 
-.cancel-btn {
-  min-width: 100px;
-
-  border: 1px solid #cbd5e1;
-
-  background: #ffffff;
-  color: #475569;
-}
-
-.cancel-btn:hover {
+.wuh-cancel-btn:hover {
   background: #f8fafc;
 }
 
-.save-profile-btn {
-  min-width: 130px;
+/* =========================================================
+   SAVE
+   ========================================================= */
+
+.wuh-save-btn {
+  min-width: 135px;
+  min-height: 46px;
+
+  padding: 12px 22px;
 
   border: none;
 
+  border-radius: 9px;
+
   background: #2563eb;
+
   color: #ffffff;
+
+  font-family: inherit;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  cursor: pointer;
 }
 
-.save-profile-btn:hover {
+.wuh-save-btn:hover {
   background: #1d4ed8;
 }
 
-.save-profile-btn:disabled,
-.cancel-btn:disabled {
+.wuh-save-btn:disabled,
+.wuh-cancel-btn:disabled {
   opacity: 0.6;
+
   cursor: not-allowed;
 }
 
@@ -654,13 +705,15 @@
    LOADING
    ========================================================= */
 
-.profile-loading {
+.wuh-profile-loading {
   width: 100%;
-  min-height: 350px;
+  min-height: 400px;
 
   display: flex;
   align-items: center;
   justify-content: center;
+
+  gap: 12px;
 
   color: #64748b;
 
@@ -668,32 +721,48 @@
   font-weight: 600;
 }
 
+.wuh-spinner {
+  width: 22px;
+  height: 22px;
+
+  border: 3px solid #dbeafe;
+  border-top-color: #2563eb;
+
+  border-radius: 50%;
+
+  animation: wuh-spin 0.8s linear infinite;
+}
+
+@keyframes wuh-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 /* =========================================================
    TABLET
    ========================================================= */
 
 @media (max-width: 768px) {
-  .profile-page {
+
+  .wuh-profile-page {
     max-width: 100%;
+
     padding: 22px;
   }
 
-  .profile-card {
+  .wuh-profile-card {
     max-width: 100%;
+
     padding: 26px;
   }
 
-  .profile-info {
-    grid-template-columns:
-      minmax(0, 1fr)
-      minmax(0, 1fr) !important;
-  }
-
-  .profile-form {
+  .wuh-profile-info {
     grid-template-columns:
       minmax(0, 1fr)
       minmax(0, 1fr);
   }
+
 }
 
 /* =========================================================
@@ -701,130 +770,119 @@
    ========================================================= */
 
 @media (max-width: 600px) {
-  .profile-page {
+
+  .wuh-profile-page {
     width: 100%;
-    max-width: 100%;
 
     padding: 14px;
 
     box-sizing: border-box;
   }
 
-  .profile-header h1 {
+  .wuh-profile-header h1 {
     font-size: 24px;
   }
 
-  .profile-card {
-    width: 100%;
-    max-width: 100%;
+  .wuh-profile-header p {
+    font-size: 14px;
+  }
 
-    margin: 0;
+  .wuh-profile-card {
+    width: 100%;
 
     padding: 20px;
 
     border-radius: 16px;
   }
 
-  .profile-top {
+  .wuh-profile-top {
     gap: 16px;
-
-    align-items: center;
   }
 
-  .profile-avatar-wrapper {
-    width: 78px;
+  .wuh-avatar {
+    width: 76px;
+    height: 76px;
+    min-width: 76px;
+
+    font-size: 29px;
   }
 
-  .profile-avatar {
-    width: 70px;
-    height: 70px;
-    min-width: 70px;
-
-    font-size: 28px;
-  }
-
-  .profile-name h2 {
+  .wuh-user-heading h2 {
     font-size: 22px;
   }
 
-  .profile-name p {
+  .wuh-user-heading p {
     font-size: 13px;
   }
 
-  .profile-info {
-    width: 100% !important;
-
+  .wuh-profile-info {
     grid-template-columns:
-      minmax(0, 1fr) !important;
+      minmax(0, 1fr);
 
     gap: 12px;
 
     padding: 22px 0;
   }
 
-  .profile-field {
-    width: 100% !important;
-
-    min-height: 75px;
+  .wuh-info-box {
+    min-height: 76px;
 
     padding: 14px 16px;
   }
 
-  .profile-bio {
-    grid-column: auto !important;
+  .wuh-bio-box {
+    grid-column: auto;
   }
 
-  .profile-actions {
+  .wuh-profile-actions {
     width: 100%;
   }
 
-  .edit-profile-btn {
+  .wuh-edit-btn {
     width: 100%;
 
     min-width: 0;
   }
 
-  .profile-form {
+  .wuh-profile-form {
     grid-template-columns:
       minmax(0, 1fr);
 
     gap: 16px;
-
-    padding-top: 22px;
   }
 
-  .form-group.full-width {
+  .wuh-full-width {
     grid-column: auto;
   }
 
-  .profile-form-actions {
+  .wuh-form-actions {
     grid-column: auto;
 
     flex-direction: column-reverse;
+  }
 
+  .wuh-cancel-btn,
+  .wuh-save-btn {
     width: 100%;
   }
 
-  .cancel-btn,
-  .save-profile-btn {
-    width: 100%;
-  }
-
-  .image-upload-box {
+  .wuh-upload-box {
     flex-direction: column;
+
     align-items: stretch;
   }
 
-  .image-upload-actions {
+  .wuh-upload-actions {
     width: 100%;
 
     flex-direction: column;
   }
 
-  .upload-image-btn,
-  .remove-image-btn {
+  .wuh-upload-btn,
+  .wuh-remove-btn {
     width: 100%;
   }
+
 }
 
 /* =========================================================
@@ -832,49 +890,47 @@
    ========================================================= */
 
 @media (max-width: 400px) {
-  .profile-page {
+
+  .wuh-profile-page {
     padding: 8px;
   }
 
-  .profile-card {
+  .wuh-profile-card {
     padding: 16px;
   }
 
-  .profile-top {
+  .wuh-profile-top {
     gap: 12px;
   }
 
-  .profile-avatar-wrapper {
-    width: 68px;
-  }
-
-  .profile-avatar {
-    width: 60px;
-    height: 60px;
-    min-width: 60px;
+  .wuh-avatar {
+    width: 64px;
+    height: 64px;
+    min-width: 64px;
 
     font-size: 25px;
   }
 
-  .profile-name h2 {
+  .wuh-user-heading h2 {
     font-size: 19px;
   }
 
-  .profile-name p {
+  .wuh-user-heading p {
     font-size: 11px;
   }
 
-  .profile-field {
+  .wuh-info-box {
     min-height: 70px;
 
     padding: 12px 14px;
   }
 
-  .field-label {
+  .wuh-info-label {
     font-size: 11px;
   }
 
-  .profile-field strong {
+  .wuh-info-box strong {
     font-size: 14px;
   }
+
 }
