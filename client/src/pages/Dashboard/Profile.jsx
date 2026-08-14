@@ -473,6 +473,28 @@ const Profile = () => {
   return (
     <div className="wuh-profile-page">
 
+<button
+  type="button"
+  onClick={() => window.location.href = "/dashboard"}
+  style={{
+    display: "inline-flex",
+    alignItems: "center",
+    gap: "8px",
+    padding: "13px 20px",
+    marginBottom: "24px",
+    border: "none",
+    borderRadius: "12px",
+    background: "#ffffff",
+    color: "#4f46e5",
+    fontSize: "15px",
+    fontWeight: "700",
+    cursor: "pointer",
+    boxShadow: "0 5px 18px rgba(79, 70, 229, 0.10)"
+  }}
+>
+  ← Back to Dashboard
+</button>
+
       {/* ================= HEADER ================= */}
 
       <div className="wuh-profile-header">
