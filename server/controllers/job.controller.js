@@ -903,6 +903,66 @@ exports.getMyCreatedJobs =
           data: [],
         });
       }
+      /*
+============================================================
+DELETE MY CREATED JOB
+============================================================
+Only the creator can delete their own job.
+Also deletes submissions belonging to that job.
+============================================================
+*/
+
+exports.deleteMyCreatedJob = async (req, res) => {
+  try {
+    const creatorId = getUserId(req.user);
+
+    if (!creatorId) {
+      return res.status(401).json({
+        success: false,
+        message: "Authentication required",
+      });
+    }
+
+    const jobId = req.params.id;
+
+    const job = await Job.findById(jobId);
+
+    if (!job) {
+      return res.status(404).json({
+        success: false,
+        message: "Job not found",
+      });
+    }
+
+    // Only the job creator can delete this job
+    if (String(job.creator) !== String(creatorId)) {
+      return res.status(403).json({
+        success: false,
+        message: "You can only delete your own jobs",
+      });
+    }
+
+    // Delete submissions related to this job
+    await JobSubmission.deleteMany({
+      job: job._id,
+    });
+
+    // Delete the job
+    await Job.findByIdAndDelete(job._id);
+
+    return res.status(200).json({
+      success: true,
+      message: "Job deleted successfully.",
+    });
+  } catch (error) {
+    console.error("Delete my job error:", error);
+
+    return res.status(500).json({
+      success: false,
+      message: "Failed to delete job.",
+    });
+  }
+};
 
 
       /*
