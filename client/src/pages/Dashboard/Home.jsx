@@ -75,7 +75,7 @@ const Home = () => {
               type="button"
               onClick={() => handleFindJob(platform.name)}
             >
-              Find Job
+              Job
             </button>
           </div>
         ))}
