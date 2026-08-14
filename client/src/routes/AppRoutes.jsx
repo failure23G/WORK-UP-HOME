@@ -31,6 +31,7 @@ import MyWork from "../pages/Dashboard/MyWork";
 import MyJob from "../pages/Dashboard/MyJob";
 import DashboardLayout from "../pages/Dashboard/DashboardLayout";
 import AdminManageBalances from "../pages/Dashboard/AdminManageBalances";
+import Home from "../pages/Dashboard/Home";
 
 // ==================================================
 // JOB PAGES
@@ -1145,11 +1146,11 @@ function AppRoutes() {
         ================================================== */}
 
         <Route
-          path="/dashboard"
-          element={
-            <Dashboard />
-          }
-        />
+  path="/dashboard"
+  element={<Dashboard />}
+>
+  <Route index element={<Home />} />
+</Route>
 
         {/* ==================================================
             AVAILABLE JOBS
