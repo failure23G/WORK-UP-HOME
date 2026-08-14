@@ -1987,12 +1987,19 @@ exports.rejectJob = async (
 
 /*
 ============================================================
-ADMIN: DELETE JOB
+DELETE JOB
 ============================================================
 
-শুধু ADMIN job delete করতে পারবে।
+Admin:
+  - যেকোনো job delete করতে পারবে
 
-Normal creator delete করতে পারবে না।
+Normal User:
+  - শুধু নিজের তৈরি job delete করতে পারবে
+  - অন্য user-এর job delete করতে পারবে না
+
+Job delete হলে:
+  - ওই job-এর সব worker submission delete হবে
+  - তারপর মূল job delete হবে
 
 ============================================================
 */
@@ -2002,15 +2009,29 @@ exports.deleteJob = async (
   res
 ) => {
   try {
-    if (
-      !isAdmin(req.user)
-    ) {
-      return res.status(403).json({
+    /*
+    --------------------------------------------------------
+    1. USER ID বের করা
+    --------------------------------------------------------
+    */
+
+    const userId =
+      getUserId(req.user);
+
+    if (!userId) {
+      return res.status(401).json({
         success: false,
         message:
-          "Admin access required",
+          "Authentication required",
       });
     }
+
+
+    /*
+    --------------------------------------------------------
+    2. JOB খুঁজে বের করা
+    --------------------------------------------------------
+    */
 
     const job =
       await Job.findById(
@@ -2026,6 +2047,87 @@ exports.deleteJob = async (
     }
 
 
+    /*
+    --------------------------------------------------------
+    3. PERMISSION CHECK
+    --------------------------------------------------------
+
+    Admin হলে যেকোনো job delete করতে পারবে।
+
+    Normal user হলে:
+    শুধু নিজের তৈরি job delete করতে পারবে।
+    */
+
+    const admin =
+      isAdmin(req.user);
+
+    const isCreator =
+      String(job.creator) ===
+      String(userId);
+
+    if (
+      !admin &&
+      !isCreator
+    ) {
+      return res.status(403).json({
+        success: false,
+        message:
+          "You can only delete your own jobs",
+      });
+    }
+
+
+    /*
+    --------------------------------------------------------
+    4. DELETE ALL SUBMISSIONS
+    --------------------------------------------------------
+
+    Job delete করার আগে ওই job-এর
+    সব worker submission delete হবে।
+    */
+
+    await JobSubmission.deleteMany({
+      job: job._id,
+    });
+
+
+    /*
+    --------------------------------------------------------
+    5. DELETE JOB
+    --------------------------------------------------------
+    */
+
+    await Job.deleteOne({
+      _id: job._id,
+    });
+
+
+    /*
+    --------------------------------------------------------
+    6. SUCCESS RESPONSE
+    --------------------------------------------------------
+    */
+
+    return res.json({
+      success: true,
+      message:
+        "Job deleted successfully",
+    });
+
+  } catch (error) {
+
+    console.error(
+      "Delete job error:",
+      error
+    );
+
+    return res.status(500).json({
+      success: false,
+      message:
+        "Failed to delete job",
+    });
+  }
+};
     /*
     --------------------------------------------------------
     DELETE SUBMISSIONS FIRST
