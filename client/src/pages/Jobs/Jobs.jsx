@@ -51,9 +51,11 @@ export default function Jobs() {
 
   const [submitting, setSubmitting] = useState(false);
 
-  /* =========================================================
-     LOAD JOBS
-  ========================================================= */
+  /*
+  =========================================================
+  LOAD JOBS
+  =========================================================
+  */
 
   const loadJobs = async () => {
     try {
@@ -95,6 +97,7 @@ export default function Jobs() {
       /*
         Full jobs should never appear.
       */
+
       const available = list.filter((job) => {
         const need = Number(
           job.workerNeed || 0
@@ -136,9 +139,11 @@ export default function Jobs() {
     loadJobs();
   }, []);
 
-  /* =========================================================
-     CATEGORIES
-  ========================================================= */
+  /*
+  =========================================================
+  CATEGORIES
+  =========================================================
+  */
 
   const categories = useMemo(() => {
     const values = jobs
@@ -147,15 +152,15 @@ export default function Jobs() {
 
     return [
       "All",
-      ...Array.from(
-        new Set(values)
-      ),
+      ...Array.from(new Set(values)),
     ];
   }, [jobs]);
 
-  /* =========================================================
-     FILTER
-  ========================================================= */
+  /*
+  =========================================================
+  FILTER
+  =========================================================
+  */
 
   const filteredJobs = useMemo(() => {
     const query = search
@@ -200,9 +205,11 @@ export default function Jobs() {
     category,
   ]);
 
-  /* =========================================================
-     OPEN JOB
-  ========================================================= */
+  /*
+  =========================================================
+  OPEN JOB
+  =========================================================
+  */
 
   const openJob = (job) => {
     setSelectedJob(job);
@@ -211,9 +218,11 @@ export default function Jobs() {
     setError("");
   };
 
-  /* =========================================================
-     CLOSE JOB
-  ========================================================= */
+  /*
+  =========================================================
+  CLOSE JOB
+  =========================================================
+  */
 
   const closeJob = () => {
     if (submitting) {
@@ -225,9 +234,11 @@ export default function Jobs() {
     setProofImages([]);
   };
 
-  /* =========================================================
-     PROOF IMAGES
-  ========================================================= */
+  /*
+  =========================================================
+  IMAGE PROOF
+  =========================================================
+  */
 
   const handleProofImages = (
     event
@@ -238,9 +249,7 @@ export default function Jobs() {
 
     const validFiles = files.filter(
       (file) =>
-        file.type.startsWith(
-          "image/"
-        ) &&
+        file.type.startsWith("image/") &&
         file.size <=
           5 * 1024 * 1024
     );
@@ -248,9 +257,11 @@ export default function Jobs() {
     setProofImages(validFiles);
   };
 
-  /* =========================================================
-     SUBMIT WORK
-  ========================================================= */
+  /*
+  =========================================================
+  SUBMIT WORK
+  =========================================================
+  */
 
   const handleSubmitJob = async () => {
     if (!selectedJob) {
@@ -301,6 +312,7 @@ export default function Jobs() {
             method: "POST",
             headers:
               authHeaders(),
+
             body: JSON.stringify({
               proofText:
                 proofText.trim(),
@@ -348,9 +360,11 @@ export default function Jobs() {
     }
   };
 
-  /* =========================================================
-     HELPERS
-  ========================================================= */
+  /*
+  =========================================================
+  HELPERS
+  =========================================================
+  */
 
   const getTitle = (job) =>
     job.title ||
@@ -358,7 +372,29 @@ export default function Jobs() {
     "Untitled Job";
 
   const getId = (job) =>
-    job.id || job._id;
+    job.id ||
+    job._id;
+
+  const getThumbnail = (job) => {
+    if (
+      typeof job.thumbnail ===
+        "string" &&
+      job.thumbnail
+    ) {
+      return job.thumbnail;
+    }
+
+    if (
+      job.thumbnail &&
+      typeof job.thumbnail ===
+        "object" &&
+      job.thumbnail.url
+    ) {
+      return job.thumbnail.url;
+    }
+
+    return "";
+  };
 
   const getWorkerNeed = (job) =>
     Number(
@@ -401,9 +437,95 @@ export default function Jobs() {
     );
   };
 
-  /* =========================================================
-     LOADING
-  ========================================================= */
+  /*
+  =========================================================
+  PLATFORM HELPERS
+  =========================================================
+  */
+
+  const getPlatform = (job) => {
+    const value = String(
+      job.platform ||
+        job.socialPlatform ||
+        job.accountType ||
+        job.subcategory ||
+        job.category ||
+        ""
+    )
+      .trim()
+      .toLowerCase();
+
+    if (
+      value.includes("gmail") ||
+      value.includes("google") ||
+      value.includes("email")
+    ) {
+      return "Gmail";
+    }
+
+    if (
+      value.includes("facebook") ||
+      value.includes("fb")
+    ) {
+      return "Facebook";
+    }
+
+    if (
+      value.includes("instagram") ||
+      value.includes("insta")
+    ) {
+      return "Instagram";
+    }
+
+    return "";
+  };
+
+  const getPlatformData = (job) => {
+    const platform =
+      getPlatform(job);
+
+    const account =
+      job.account ||
+      job.credentials ||
+      job.login ||
+      {};
+
+    const email =
+      job.email ||
+      job.gmail ||
+      job.gmailAddress ||
+      job.accountEmail ||
+      account.email ||
+      account.gmail ||
+      "";
+
+    const username =
+      job.username ||
+      job.instagramUsername ||
+      job.facebookUsername ||
+      account.username ||
+      "";
+
+    const description =
+      job.description ||
+      job.accountDescription ||
+      job.platformDescription ||
+      job.note ||
+      "";
+
+    return {
+      platform,
+      email,
+      username,
+      description,
+    };
+  };
+
+  /*
+  =========================================================
+  LOADING
+  =========================================================
+  */
 
   if (loading) {
     return (
@@ -421,20 +543,21 @@ export default function Jobs() {
     );
   }
 
-  /* =========================================================
-     PAGE
-  ========================================================= */
+  /*
+  =========================================================
+  PAGE
+  =========================================================
+  */
 
   return (
     <div className="jobs-page">
       <div className="jobs-container">
 
-        {/* =================================================
-            HEADER
-        ================================================= */}
+        {/* HEADER */}
 
         <div className="jobs-header">
           <div className="jobs-header-left">
+
             <span className="jobs-eyebrow">
               WORK UP HOME
             </span>
@@ -447,6 +570,7 @@ export default function Jobs() {
               Complete available tasks
               and earn money.
             </p>
+
           </div>
 
           <div className="jobs-count">
@@ -460,13 +584,12 @@ export default function Jobs() {
           </div>
         </div>
 
-        {/* =================================================
-            SEARCH + CATEGORY
-        ================================================= */}
+        {/* SEARCH */}
 
         <div className="jobs-toolbar">
 
           <div className="jobs-search">
+
             <span className="jobs-search-icon">
               ⌕
             </span>
@@ -493,9 +616,11 @@ export default function Jobs() {
                 ×
               </button>
             )}
+
           </div>
 
           <div className="jobs-category-filter">
+
             <select
               value={category}
               onChange={(e) =>
@@ -515,13 +640,12 @@ export default function Jobs() {
                 )
               )}
             </select>
+
           </div>
 
         </div>
 
-        {/* =================================================
-            ERROR
-        ================================================= */}
+        {/* ERROR */}
 
         {error && (
           <div className="jobs-error">
@@ -540,9 +664,7 @@ export default function Jobs() {
           </div>
         )}
 
-        {/* =================================================
-            SUCCESS
-        ================================================= */}
+        {/* SUCCESS */}
 
         {success && (
           <div className="jobs-success">
@@ -561,9 +683,7 @@ export default function Jobs() {
           </div>
         )}
 
-        {/* =================================================
-            EMPTY
-        ================================================= */}
+        {/* EMPTY */}
 
         {filteredJobs.length === 0 ? (
           <div className="jobs-empty">
@@ -597,14 +717,13 @@ export default function Jobs() {
           </div>
         ) : (
 
-          /* =================================================
-             JOB LIST
-          ================================================= */
+          /* JOB LIST */
 
           <div className="jobs-grid">
 
             {filteredJobs.map(
               (job) => {
+
                 const jobId =
                   getId(job);
 
@@ -646,7 +765,7 @@ export default function Jobs() {
                     }}
                   >
 
-                    {/* JOB TITLE */}
+                    {/* TITLE */}
 
                     <div className="job-row-title-line">
 
@@ -660,7 +779,7 @@ export default function Jobs() {
 
                     </div>
 
-                    {/* PROGRESS + RATE */}
+                    {/* PROGRESS */}
 
                     <div className="job-row-bottom">
 
@@ -672,6 +791,7 @@ export default function Jobs() {
                         </span>
 
                         <div className="job-row-progress-track">
+
                           <div
                             className="job-row-progress-fill"
                             style={{
@@ -679,6 +799,7 @@ export default function Jobs() {
                                 `${progress}%`,
                             }}
                           />
+
                         </div>
 
                       </div>
@@ -718,13 +839,12 @@ export default function Jobs() {
 
           <div className="job-modal">
 
-            {/* =================================================
-                MODAL HEADER
-            ================================================= */}
+            {/* HEADER */}
 
             <div className="job-modal-header">
 
               <div>
+
                 <span className="jobs-eyebrow">
                   JOB DETAILS
                 </span>
@@ -734,24 +854,21 @@ export default function Jobs() {
                     selectedJob
                   )}
                 </h2>
+
               </div>
 
               <button
                 type="button"
                 className="job-modal-close"
                 onClick={closeJob}
-                disabled={
-                  submitting
-                }
+                disabled={submitting}
               >
                 ×
               </button>
 
             </div>
 
-            {/* =================================================
-                MODAL BODY
-            ================================================= */}
+            {/* BODY */}
 
             <div className="job-modal-body">
 
@@ -770,6 +887,164 @@ export default function Jobs() {
                 </span>
 
               </div>
+
+              {/* =================================================
+                  PLATFORM DETAILS
+              ================================================= */}
+
+              {(() => {
+                const platformData =
+                  getPlatformData(
+                    selectedJob
+                  );
+
+                if (
+                  !platformData.platform
+                ) {
+                  return null;
+                }
+
+                return (
+                  <div className="job-platform-box">
+
+                    <div className="job-platform-heading">
+
+                      <div>
+                        <span className="job-platform-label">
+                          ACCOUNT DETAILS
+                        </span>
+
+                        <h3>
+                          {platformData.platform}
+                        </h3>
+                      </div>
+
+                      <span className="job-platform-pill">
+                        {platformData.platform}
+                      </span>
+
+                    </div>
+
+                    <div className="job-platform-fields">
+
+                      {/* GMAIL */}
+
+                      {platformData.platform ===
+                        "Gmail" && (
+                        <>
+                          <div className="job-platform-field">
+
+                            <label>
+                              Gmail
+                            </label>
+
+                            <div className="job-platform-value">
+                              {platformData.email ||
+                                "No Gmail provided"}
+                            </div>
+
+                          </div>
+
+                          <div className="job-platform-field">
+
+                            <label>
+                              Password
+                            </label>
+
+                            <div className="job-platform-value job-password-hidden">
+                              Hidden for security
+                            </div>
+
+                          </div>
+                        </>
+                      )}
+
+                      {/* FACEBOOK */}
+
+                      {platformData.platform ===
+                        "Facebook" && (
+                        <>
+                          <div className="job-platform-field">
+
+                            <label>
+                              Facebook
+                            </label>
+
+                            <div className="job-platform-value">
+                              {platformData.username ||
+                                platformData.email ||
+                                "No Facebook account provided"}
+                            </div>
+
+                          </div>
+
+                          <div className="job-platform-field">
+
+                            <label>
+                              Password
+                            </label>
+
+                            <div className="job-platform-value job-password-hidden">
+                              Hidden for security
+                            </div>
+
+                          </div>
+                        </>
+                      )}
+
+                      {/* INSTAGRAM */}
+
+                      {platformData.platform ===
+                        "Instagram" && (
+                        <>
+                          <div className="job-platform-field">
+
+                            <label>
+                              Instagram
+                            </label>
+
+                            <div className="job-platform-value">
+                              {platformData.username ||
+                                platformData.email ||
+                                "No Instagram account provided"}
+                            </div>
+
+                          </div>
+
+                          <div className="job-platform-field">
+
+                            <label>
+                              Password
+                            </label>
+
+                            <div className="job-platform-value job-password-hidden">
+                              Hidden for security
+                            </div>
+
+                          </div>
+                        </>
+                      )}
+
+                    </div>
+
+                    {/* DESCRIPTION */}
+
+                    <div className="job-platform-description">
+
+                      <h4>
+                        Description
+                      </h4>
+
+                      <p>
+                        {platformData.description ||
+                          "No description provided."}
+                      </p>
+
+                    </div>
+
+                  </div>
+                );
+              })()}
 
               {/* INSTRUCTIONS */}
 
@@ -802,11 +1077,13 @@ export default function Jobs() {
                   ) &&
                   selectedJob.tasks.length >
                     0 ? (
+
                     selectedJob.tasks.map(
                       (
                         task,
                         index
                       ) => (
+
                         <div
                           key={index}
                           className="job-task-detail"
@@ -821,13 +1098,17 @@ export default function Jobs() {
                           </p>
 
                         </div>
+
                       )
                     )
+
                   ) : (
+
                     <p>
                       Follow the job
                       instructions.
                     </p>
+
                   )}
 
                 </div>
@@ -854,6 +1135,7 @@ export default function Jobs() {
               <div className="job-modal-stats">
 
                 <div>
+
                   <span>
                     Rate
                   </span>
@@ -865,9 +1147,11 @@ export default function Jobs() {
                         0
                     ).toFixed(3)}
                   </strong>
+
                 </div>
 
                 <div>
+
                   <span>
                     Workers
                   </span>
@@ -878,9 +1162,11 @@ export default function Jobs() {
                         0
                     )}
                   </strong>
+
                 </div>
 
                 <div>
+
                   <span>
                     Days
                   </span>
@@ -891,6 +1177,7 @@ export default function Jobs() {
                         1
                     )}
                   </strong>
+
                 </div>
 
               </div>
@@ -911,9 +1198,7 @@ export default function Jobs() {
                 <textarea
                   rows={6}
                   value={proofText}
-                  disabled={
-                    submitting
-                  }
+                  disabled={submitting}
                   onChange={(e) =>
                     setProofText(
                       e.target.value
@@ -930,9 +1215,7 @@ export default function Jobs() {
                     type="file"
                     accept="image/*"
                     multiple
-                    disabled={
-                      submitting
-                    }
+                    disabled={submitting}
                     onChange={
                       handleProofImages
                     }
@@ -953,11 +1236,13 @@ export default function Jobs() {
                         file,
                         index
                       ) => (
+
                         <div
                           key={`${file.name}-${index}`}
                         >
                           {file.name}
                         </div>
+
                       )
                     )}
 
@@ -968,18 +1253,14 @@ export default function Jobs() {
 
             </div>
 
-            {/* =================================================
-                MODAL FOOTER
-            ================================================= */}
+            {/* FOOTER */}
 
             <div className="job-modal-footer">
 
               <button
                 type="button"
                 className="job-modal-cancel"
-                disabled={
-                  submitting
-                }
+                disabled={submitting}
                 onClick={closeJob}
               >
                 Cancel
@@ -988,9 +1269,7 @@ export default function Jobs() {
               <button
                 type="button"
                 className="job-modal-submit"
-                disabled={
-                  submitting
-                }
+                disabled={submitting}
                 onClick={
                   handleSubmitJob
                 }
@@ -1003,8 +1282,10 @@ export default function Jobs() {
             </div>
 
           </div>
+
         </div>
       )}
+
     </div>
   );
 }

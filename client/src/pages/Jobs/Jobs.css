@@ -30,7 +30,6 @@
   margin: 0 auto;
 }
 
-
 /* =========================================================
    HEADER
 ========================================================= */
@@ -74,7 +73,6 @@
   font-size: 16px;
 }
 
-
 /* =========================================================
    JOB COUNT
 ========================================================= */
@@ -108,7 +106,6 @@
   font-size: 13px;
   font-weight: 600;
 }
-
 
 /* =========================================================
    SEARCH TOOLBAR
@@ -224,7 +221,6 @@
   cursor: pointer;
 }
 
-
 /* =========================================================
    ERROR
 ========================================================= */
@@ -262,7 +258,6 @@
 
   font-size: 18px;
 }
-
 
 /* =========================================================
    SUCCESS
@@ -302,7 +297,6 @@
   font-size: 18px;
 }
 
-
 /* =========================================================
    LOADING
 ========================================================= */
@@ -338,7 +332,6 @@
     transform: rotate(360deg);
   }
 }
-
 
 /* =========================================================
    EMPTY
@@ -417,10 +410,8 @@
   cursor: pointer;
 }
 
-
 /* =========================================================
    JOB LIST
-   SCREENSHOT STYLE
 ========================================================= */
 
 .jobs-grid {
@@ -431,7 +422,6 @@
 
   gap: 8px !important;
 }
-
 
 /* =========================================================
    JOB ROW
@@ -482,9 +472,8 @@
     rgba(75, 111, 240, 0.12);
 }
 
-
 /* =========================================================
-   JOB TITLE + TOP JOB
+   JOB TITLE
 ========================================================= */
 
 .job-row-title-line {
@@ -530,7 +519,6 @@
   letter-spacing: 0.3px;
 }
 
-
 /* =========================================================
    JOB ROW BOTTOM
 ========================================================= */
@@ -548,7 +536,6 @@
 
   width: 100%;
 }
-
 
 /* =========================================================
    PROGRESS
@@ -604,7 +591,6 @@
     width 0.3s ease;
 }
 
-
 /* =========================================================
    RATE
 ========================================================= */
@@ -620,9 +606,8 @@
   white-space: nowrap;
 }
 
-
 /* =========================================================
-   JOB MODAL OVERLAY
+   MODAL OVERLAY
 ========================================================= */
 
 .job-modal-overlay {
@@ -643,9 +628,8 @@
   backdrop-filter: blur(7px);
 }
 
-
 /* =========================================================
-   JOB MODAL
+   MODAL
 ========================================================= */
 
 .job-modal {
@@ -664,7 +648,6 @@
     0 30px 80px
     rgba(20, 22, 60, 0.3);
 }
-
 
 /* =========================================================
    MODAL HEADER
@@ -718,7 +701,6 @@
   cursor: not-allowed;
 }
 
-
 /* =========================================================
    MODAL BODY
 ========================================================= */
@@ -726,7 +708,6 @@
 .job-modal-body {
   padding: 28px;
 }
-
 
 /* =========================================================
    MODAL TAGS
@@ -753,6 +734,164 @@
   font-weight: 700;
 }
 
+/* =========================================================
+   PLATFORM ACCOUNT BOX
+========================================================= */
+
+.job-platform-box {
+  margin-bottom: 28px;
+
+  padding: 20px;
+
+  border: 1px solid #e3defc;
+  border-radius: 18px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #faf9ff 0%,
+      #f4f1ff 100%
+    );
+
+  box-shadow:
+    0 8px 24px
+    rgba(92, 68, 190, 0.08);
+}
+
+.job-platform-heading {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 15px;
+
+  margin-bottom: 18px;
+}
+
+.job-platform-label {
+  display: block;
+
+  margin-bottom: 5px;
+
+  color: #7356dc;
+
+  font-size: 10px;
+  font-weight: 800;
+
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.job-platform-heading h3 {
+  margin: 0;
+
+  color: #252f52;
+
+  font-size: 21px;
+}
+
+.job-platform-pill {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  min-height: 32px;
+
+  padding: 0 13px;
+
+  border-radius: 10px;
+
+  background: #e9e3ff;
+
+  color: #6745d9;
+
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.job-platform-fields {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 13px;
+
+  margin-bottom: 15px;
+}
+
+.job-platform-field {
+  min-width: 0;
+
+  padding: 14px;
+
+  border: 1px solid #e5e1f4;
+  border-radius: 13px;
+
+  background: #ffffff;
+}
+
+.job-platform-field label {
+  display: block;
+
+  margin-bottom: 7px;
+
+  color: #8992ac;
+
+  font-size: 11px;
+  font-weight: 700;
+
+  text-transform: uppercase;
+}
+
+.job-platform-value {
+  min-width: 0;
+
+  overflow: hidden;
+
+  color: #283251;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  word-break: break-word;
+}
+
+.job-password-hidden {
+  color: #7967bd;
+  letter-spacing: 0.4px;
+}
+
+.job-platform-description {
+  padding: 15px;
+
+  border-radius: 13px;
+
+  background: #ffffff;
+
+  border: 1px solid #e5e1f4;
+}
+
+.job-platform-description h4 {
+  margin: 0 0 7px;
+
+  color: #303957;
+
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.job-platform-description p {
+  margin: 0;
+
+  color: #727d9d;
+
+  line-height: 1.65;
+
+  white-space: pre-wrap;
+}
 
 /* =========================================================
    DETAIL BLOCK
@@ -780,13 +919,13 @@
   white-space: pre-wrap;
 }
 
-
 /* =========================================================
    TASK DETAILS
 ========================================================= */
 
 .job-task-details {
   display: flex;
+
   flex-direction: column;
 
   gap: 10px;
@@ -794,6 +933,7 @@
 
 .job-task-detail {
   display: flex;
+
   align-items: flex-start;
 
   gap: 12px;
@@ -828,7 +968,6 @@
   color: #4d5877;
 }
 
-
 /* =========================================================
    REQUIRED PROOF
 ========================================================= */
@@ -843,7 +982,6 @@
 
   background: #f2f0ff;
 }
-
 
 /* =========================================================
    MODAL STATS
@@ -888,7 +1026,6 @@
   font-size: 19px;
 }
 
-
 /* =========================================================
    SUBMIT HELP
 ========================================================= */
@@ -897,13 +1034,13 @@
   font-size: 13px;
 }
 
-
 /* =========================================================
    TEXTAREA
 ========================================================= */
 
 .job-detail-block textarea {
   width: 100%;
+
   min-height: 130px;
 
   resize: vertical;
@@ -938,7 +1075,6 @@
   opacity: 0.65;
 }
 
-
 /* =========================================================
    PROOF UPLOAD
 ========================================================= */
@@ -956,6 +1092,7 @@
   border-radius: 13px;
 
   background: #f7f5ff;
+
   color: #6848df;
 
   text-align: center;
@@ -973,13 +1110,13 @@
   display: none;
 }
 
-
 /* =========================================================
    PROOF FILES
 ========================================================= */
 
 .job-proof-files {
   display: flex;
+
   flex-wrap: wrap;
 
   gap: 8px;
@@ -993,11 +1130,11 @@
   border-radius: 8px;
 
   background: #edf0fa;
+
   color: #59647f;
 
   font-size: 12px;
 }
-
 
 /* =========================================================
    MODAL FOOTER
@@ -1005,6 +1142,7 @@
 
 .job-modal-footer {
   display: flex;
+
   justify-content: flex-end;
 
   gap: 12px;
@@ -1021,6 +1159,7 @@
   height: 44px;
 
   border: none;
+
   border-radius: 11px;
 
   font-weight: 800;
@@ -1030,6 +1169,7 @@
 
 .job-modal-cancel {
   background: #eef0f6;
+
   color: #5d6782;
 }
 
@@ -1059,9 +1199,9 @@
 .job-modal-submit:disabled,
 .job-modal-cancel:disabled {
   opacity: 0.55;
+
   cursor: not-allowed;
 }
-
 
 /* =========================================================
    RESPONSIVE - TABLET
@@ -1087,7 +1227,6 @@
     gap: 18px;
   }
 }
-
 
 /* =========================================================
    RESPONSIVE - MOBILE
@@ -1119,7 +1258,6 @@
 
     box-sizing: border-box;
   }
-
 
   /* HEADER */
 
@@ -1154,7 +1292,6 @@
 
     box-sizing: border-box;
   }
-
 
   /* TOOLBAR */
 
@@ -1191,7 +1328,6 @@
 
     box-sizing: border-box;
   }
-
 
   /* JOB LIST */
 
@@ -1252,7 +1388,6 @@
     font-size: 13px;
   }
 
-
   /* EMPTY */
 
   .jobs-empty {
@@ -1260,7 +1395,6 @@
       55px
       20px;
   }
-
 
   /* MODAL */
 
@@ -1290,6 +1424,30 @@
     padding: 18px;
   }
 
+  /* PLATFORM */
+
+  .job-platform-box {
+    padding: 15px;
+
+    border-radius: 15px;
+  }
+
+  .job-platform-heading {
+    align-items: flex-start;
+  }
+
+  .job-platform-fields {
+    grid-template-columns: 1fr;
+  }
+
+  .job-platform-pill {
+    min-height: 29px;
+
+    padding: 0 10px;
+
+    font-size: 10px;
+  }
+
   .job-modal-stats {
     grid-template-columns:
       1fr !important;
@@ -1308,7 +1466,6 @@
     width: 100%;
   }
 }
-
 
 /* =========================================================
    VERY SMALL MOBILE
@@ -1331,6 +1488,7 @@
     padding:
       14px
       12px;
+
     border-radius: 6px;
   }
 
